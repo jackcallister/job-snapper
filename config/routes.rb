@@ -1,4 +1,5 @@
 JobSnapper::Application.routes.draw do
+  devise_for :candidates, :path_names => { :sign_in => "sign-in", :sign_out => "sign-out", :sign_up => "sign-up" }
   devise_for :employers, :path_names => { :sign_in => "sign-in", :sign_out => "sign-out", :sign_up => "sign-up" }
   root to: "pages#home"
   # The priority is based upon order of creation: first created -> highest priority.
