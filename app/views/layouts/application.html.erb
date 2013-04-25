@@ -2,15 +2,15 @@
 <html>
 <head>
   <meta name="google-site-verification" content="Z-azwBu8nuEASJSdidTBfxFioWEDlhweE8WcoQOn_JA" />
+  <meta name="robots" content="noindex">
   <title>JobSnapper</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
-<%= yield %>
-
+  <p class="notice"><%= notice %></p>
+  <p class="alert"><%= alert %></p>
+  <%= yield %>
 </body>
 </html>
