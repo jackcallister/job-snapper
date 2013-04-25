@@ -1,4 +1,6 @@
+require 'bundler/capistrano'
 require 'capistrano/ext/multistage'
+
 set :application, "job-snapper"
 set :repository,  "git@github.com:jarsbe/job-snapper.git"
 
