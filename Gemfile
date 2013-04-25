@@ -5,6 +5,8 @@ gem 'rails', '4.0.0.beta1'
 
 gem 'pg'
 
+gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
