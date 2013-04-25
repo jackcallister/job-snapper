@@ -15,7 +15,7 @@ set :user, "jobsnapper"
 set :use_sudo, false
 set :port, 4848
 
-before "deploy:assets:precompile", "init:link_database_conf"
+before "deploy:assets:precompile", "init:link_database_conf", "init:link_variables_conf"
 
 role :web, "198.199.97.111"                          # Your HTTP server, Apache/etc
 role :app, "198.199.97.111"                          # This may be the same as your `Web` server
@@ -40,5 +40,9 @@ end
 namespace :init do
   task :link_database_conf, :except => { :no_release => true } do
     run "ln -s #{shared_path}/config/database.yml #{release_path}/config/database.yml"
+  end
+
+  task :link_variables_conf, :except => { :no_release => true } do
+    run "ln -s #{shared_path}/config/variables.rb #{release_path}/config/variables.rb"
   end
 end
