@@ -31,8 +31,17 @@ gem 'jbuilder', '~> 1.0.1'
 # Use unicorn as the app server
 # gem 'unicorn'
 
-# Deploy with Capistrano
-gem 'capistrano', group: :development
+group :development do
+  # Deploy with Capistrano
+  gem 'capistrano'
+  # To use debugger
+  gem 'debugger'
+end
 
-# To use debugger
-# gem 'debugger'
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'guard-rspec'
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'rb-fsevent', '~> 0.9'
+end
