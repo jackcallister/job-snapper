@@ -2,7 +2,7 @@ class Candidates::ProfilesController < ApplicationController
   before_filter :authenticate_candidate!
 
   def create
-    @profile = current_candidate.build_profile(params[:profile])
+    @profile = current_candidate.build_profile(candidate_profile_params)
     respond_to do |format|
       if @profile.save
         format.html { redirect_to root_url, notice: "Profile successfully created." }
@@ -11,15 +11,6 @@ class Candidates::ProfilesController < ApplicationController
         format.html { render @profile }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  def new
-    @profile = Candidate::Profile.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @profile }
     end
   end
 
@@ -40,7 +31,7 @@ class Candidates::ProfilesController < ApplicationController
     @profile = Candidate::Profile.find_by_candidate_id(current_candidate)
 
     respond_to do |format|
-      if @profile.update_attributes(params[:profile])
+      if @profile.update_attributes(candidate_profile_params)
         format.html { redirect_to root_url, notice: 'Profile was successfully updated.' }
         format.json { head :no_content }
       else
@@ -58,5 +49,11 @@ class Candidates::ProfilesController < ApplicationController
       format.html { redirect_to root_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def candidate_profile_params
+    params.require(:candidate_profile).permit()
   end
 end
