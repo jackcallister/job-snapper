@@ -5,7 +5,7 @@ class Employers::ProfilesController < ApplicationController
   # a job model (also make a category model & pay scale model & any others you can think of).
 
   def create
-    @profile = current_employer.build_profile(params[:profile])
+    @profile = current_employer.build_profile(employer_profile_params)
     respond_to do |format|
       if @profile.save
         format.html { redirect_to root_url, notice: "Profile successfully created." }
@@ -17,21 +17,12 @@ class Employers::ProfilesController < ApplicationController
     end
   end
 
-  def new
-    @profile = Employer::Profile.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @profile }
-    end
-  end
-
   def edit
-    @profile = Employer::Profile.find_by_Employer_id(current_employer)
+    @profile = Employer::Profile.find_by_employer_id(current_employer)
   end
 
   def show
-    @profile = Employer::Profile.find_by_Employer_id(current_employer)
+    @profile = Employer::Profile.find_by_employer_id(current_employer)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -40,10 +31,10 @@ class Employers::ProfilesController < ApplicationController
   end
 
   def update
-    @profile = Employer::Profile.find_by_Employer_id(current_employer)
+    @profile = Employer::Profile.find_by_employer_id(current_employer)
 
     respond_to do |format|
-      if @profile.update_attributes(params[:profile])
+      if @profile.update_attributes(employer_profile_params)
         format.html { redirect_to root_url, notice: 'Profile was successfully updated.' }
         format.json { head :no_content }
       else
@@ -54,12 +45,18 @@ class Employers::ProfilesController < ApplicationController
   end
 
   def destroy
-    @profile = Employer::Profile.find_by_Employer_id(current_employer)
+    @profile = Employer::Profile.find_by_employer_id(current_employer)
     @profile.destroy
 
     respond_to do |format|
       format.html { redirect_to root_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def employer_profile_params
+    params.require(:employer_profile).permit(:company)
   end
 end

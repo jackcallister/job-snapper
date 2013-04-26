@@ -1,5 +1,8 @@
 JobSnapper::Application.routes.draw do
-  devise_for :employers, :candidates, :path_names => { :sign_in => "sign-in", :sign_out => "sign-out", :sign_up => "sign-up" }
+  devise_for  :employers, :candidates,
+              :path_names => { :sign_in => "sign-in", :sign_out => "sign-out", :sign_up => "sign-up" },
+              :controllers => { :registrations => :registrations }
+
   root to: "pages#home"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -45,13 +48,13 @@ JobSnapper::Application.routes.draw do
   namespace :candidates do
     # Directs /admin/products/* to Admin::ProductsController
     # (app/controllers/admin/products_controller.rb)
-    resource :profile
+    resource :profile, :except => [:new, :destroy]
   end
 
   namespace :employers do
     # Directs /admin/products/* to Admin::ProductsController
     # (app/controllers/admin/products_controller.rb)
-    resource :profile
+    resource :profile, :except => [:new, :destroy]
   end
 
   # Example resource route within a namespace:

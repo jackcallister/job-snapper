@@ -1,4 +1,6 @@
-<%= form_for(@profile, url: candidates_profile_path) do |f| %>
+<%= form_for(@profile, url: employers_profile_path) do |f| %>
+  <%= f.label :company %>
+  <%= f.text_field :company %>
 
   <%= f.submit %>
 <% end %>
