@@ -5,3 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+employer = Employer.create(email: "employer@example.com", password: "password", password_confirmation: "password")
+candidate = Candidate.create(email: "candidate@example.com", password: "password", password_confirmation: "password")
+
+employer.build_profile.save
+candidate.build_profile.save

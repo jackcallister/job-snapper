@@ -13,8 +13,10 @@ JobSnapper::Application.routes.draw do
 
   resources :jobs
 
-  namespace :applicants do
-    resources :application
+  get "jobs/:id/dashboard" => "jobs#dashboard", :as => "job_dashboard"
+
+  namespace :applicant do
+    resource :application, :controller => 'application', only: [:create, :destroy]
   end
 
   root to: "pages#home"

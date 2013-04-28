@@ -1,8 +1,21 @@
 class JobsController < ApplicationController
   before_action :authenticate_employer!, except: [:show, :index]
-  before_action :correct_employer, only: [:destroy, :update, :edit]
-  before_action :assign_candidate, only: [:show]
-  before_action :setup_application, only: [:show]
+  before_action :correct_employer, only: [:dashboard, :edit, :update, :destroy]
+  before_action :application_status, only: [:show]
+  before_action :build_application, only: [:show]
+
+  def dashboard
+    @applicants = []
+
+    @job.applications.each do |applications|
+      @applicants << Candidate::Profile.find_by(candidate_id: applications.candidate_id)
+    end
+
+    respond_to do |format|
+      format.html # dashboard.html.erb
+      # format.json { render json: @jobs }
+    end
+  end
 
   def index
     @jobs = Job.all
@@ -71,6 +84,39 @@ class JobsController < ApplicationController
 
   private
 
+  def build_application
+    # An employer cannot apply for jobs, only registered candidates
+    # and guests. If we are an employer the application form
+    # won't be built. If we are a guest diverge off to build a
+    # null set of parameters. If we are a candidate build the
+    # appropriate params.
+    if current_employer
+      return
+    elsif current_candidate.nil?
+      build_guest_application
+    else
+      @application = Application.new(candidate_id: current_candidate.id, job_id: params[:id])
+      params[:application] = @application
+    end
+  end
+
+  def build_guest_application
+    @application = Application.new(candidate_id: nil, job_id: params[:id])
+    params[:application] = @application
+  end
+
+  def application_status
+    if current_employer
+      @has_applied = false
+    elsif current_candidate.nil?
+      @has_applied = false
+    elsif Application.where(candidate_id: current_candidate.id, job_id: params[:id])
+      @has_applied = true
+    else
+      @has_applied = false
+    end
+  end
+
   def job_params
     params.require(:job).permit(
       :company,
@@ -84,16 +130,5 @@ class JobsController < ApplicationController
   def correct_employer
     @job = current_employer.jobs.find_by(id: params[:id])
     redirect_to root_url if @job.nil?
-  end
-
-  def assign_candidate
-    return if current_candidate.nil?
-    @candidate = current_candidate
-  end
-
-  def setup_application
-    return if current_candidate.nil?
-    @application = Application.new(candidate_id: current_candidate.id, job_id: params[:id])
-    params[:application] = @application
   end
 end
