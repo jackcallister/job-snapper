@@ -17,6 +17,8 @@ gem 'acts-as-taggable-on', github: 'arabonradar/acts-as-taggable-on', branch: 'r
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'bootstrap-sass', '~> 2.3.1.1'
+  gem 'smacssify', '~> 0.0.12'
   gem 'sass-rails',   '~> 4.0.0.beta1'
   gem 'coffee-rails', '~> 4.0.0.beta1'
 
