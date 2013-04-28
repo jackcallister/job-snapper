@@ -43,8 +43,6 @@ gem 'jbuilder', '~> 1.0.1'
 group :development do
   # Deploy with Capistrano
   gem 'capistrano'
-  # To use debugger
-  gem 'debugger'
 end
 
 group :development, :test do
@@ -53,5 +51,7 @@ group :development, :test do
   gem 'shoulda'
   gem 'factory_girl_rails'
   gem 'capybara'
+  gem 'launchy'
   gem 'rb-fsevent', '~> 0.9'
+  gem 'debugger'
 end
