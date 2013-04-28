@@ -1,0 +1,7 @@
+<%= form_for(@application, url: applicants_application_path) do |f| %>
+  <%= f.hidden_field :candidate_id, value: params[:application][:candidate_id] %>
+  <%= f.hidden_field :job_id, value: params[:application][:job_id] %>
+  <%= f.submit "Apply" %>
+<% end %>
+
+<%= debug(params) %>

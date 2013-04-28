@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130427024359) do
+ActiveRecord::Schema.define(version: 20130428064337) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "applications", force: true do |t|
+    t.integer  "job_id"
+    t.integer  "candidate_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "candidate_profiles", force: true do |t|
     t.integer "candidate_id"
@@ -32,6 +39,19 @@ ActiveRecord::Schema.define(version: 20130427024359) do
   create_table "employer_profiles", force: true do |t|
     t.integer "employer_id"
     t.string  "company"
+  end
+
+  create_table "jobs", force: true do |t|
+    t.string   "title",       default: "", null: false
+    t.string   "company"
+    t.integer  "type_id",                  null: false
+    t.integer  "category_id",              null: false
+    t.integer  "pay_rate_id",              null: false
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.integer  "employer_id",              null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "taggings", force: true do |t|
