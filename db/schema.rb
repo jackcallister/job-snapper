@@ -11,13 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130426103650) do
+ActiveRecord::Schema.define(version: 20130427024359) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "candidate_profiles", force: true do |t|
     t.integer "candidate_id"
+    t.string  "first_name"
+    t.string  "last_name"
+    t.integer "age"
+    t.string  "address_line_1"
+    t.string  "address_line_2"
+    t.string  "region"
+    t.string  "city_or_town"
+    t.text    "information"
+    t.text    "previous_work_experience"
   end
 
   create_table "employer_profiles", force: true do |t|
@@ -25,8 +34,24 @@ ActiveRecord::Schema.define(version: 20130426103650) do
     t.string  "company"
   end
 
+  create_table "taggings", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+
+  create_table "tags", force: true do |t|
+    t.string "name"
+  end
+
   create_table "users", force: true do |t|
-    t.string   "name"
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -37,8 +62,7 @@ ActiveRecord::Schema.define(version: 20130426103650) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.integer  "profile_id"
-    t.string   "profile_type"
+    t.string   "type"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
