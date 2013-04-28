@@ -110,7 +110,7 @@ class JobsController < ApplicationController
       # User is a guest and can apply.
       @can_apply = true
     elsif current_employer
-      # Employers cannot apply
+      # Employer cannot apply
       @can_apply = false
     elsif current_candidate.can_apply?(params[:id])
       # Candidate has already applied to this job.
