@@ -1,4 +1,44 @@
-<%= form_for(@profile, url: employers_profile_path) do |f| %>
+<%= form_for(@profile, url: candidates_profile_path) do |f| %>
 
+  <div>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+  </div>
+  <div>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+  </div>
+  <div>
+    <%= f.label :age %>
+    <%= f.text_field :age %>
+  </div>
+  <div>
+    <%= f.label :address_line_1 %>
+    <%= f.text_field :address_line_1 %>
+  </div>
+  <div>
+    <%= f.label :address_line_2 %>
+    <%= f.text_field :address_line_2 %>
+  </div>
+  <div>
+    <%= f.label :region %>
+    <%= f.text_field :region %>
+  </div>
+  <div>
+    <%= f.label :city_or_town, "City/town" %>
+    <%= f.text_field :city_or_town %>
+  </div>
+  <div>
+    <%= f.label :information, "About me" %>
+    <%= f.text_area :information %>
+  </div>
+  <div>
+    <%= f.label :previous_work_experience %>
+    <%= f.text_area :previous_work_experience %>
+  </div>
+  <div>
+    <%= f.label :skill_list, "Skills (separated by commas)" %><br />
+    <%= f.text_field :skill_list %>
+  </div>
   <%= f.submit %>
 <% end %>

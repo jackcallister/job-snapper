@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/arabonradar/acts-as-taggable-on.git
+  revision: 853b30869996863dd747cf23494fc60e810178e3
+  branch: rails4
+  specs:
+    acts-as-taggable-on (2.4.1.pre)
+      rails (>= 3, < 5)
+
+GIT
   remote: git://github.com/plataformatec/devise.git
   revision: c6189696772925ae0c608fdd8d535f735e8e114e
   branch: rails4
@@ -214,6 +222,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on!
   capistrano
   capybara
   coffee-rails (~> 4.0.0.beta1)

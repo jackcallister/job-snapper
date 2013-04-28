@@ -5,7 +5,14 @@ gem 'rails', '4.0.0.beta1'
 
 gem 'pg'
 
+# User authentication as employer or candidate.
 gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
+
+# For candidates skills and jobs required skills.
+gem 'acts-as-taggable-on', github: 'arabonradar/acts-as-taggable-on', branch: 'rails4'
+
+# For rails 3.x gems with attr_accessible
+# gem 'protected_attributes'
 
 # Gems used only for assets and not required
 # in production environments by default.
