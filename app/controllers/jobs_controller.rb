@@ -106,14 +106,18 @@ class JobsController < ApplicationController
   end
 
   def application_status
-    if current_employer
-      @has_applied = false
-    elsif current_candidate.nil?
-      @has_applied = false
-    elsif Application.where(candidate_id: current_candidate.id, job_id: params[:id])
-      @has_applied = true
+    if current_candidate.nil? && current_employer.nil?
+      # User is a guest and can apply.
+      @can_apply = true
+    elsif current_employer
+      # Employers cannot apply
+      @can_apply = false
+    elsif current_candidate.can_apply?(params[:id])
+      # Candidate has already applied to this job.
+      @can_apply = false
     else
-      @has_applied = false
+      # All that's left is a candidate that has not applied.
+      @can_apply = true
     end
   end
 

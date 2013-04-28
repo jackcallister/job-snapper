@@ -1,4 +1,4 @@
 <%= @job.company %>
 
-<%= render partial: "apply_button" unless @has_applied || current_employer %>
+<%= render partial: "apply_button" if @can_apply %>
 
