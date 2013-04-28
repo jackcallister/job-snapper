@@ -1,0 +1,10 @@
+<%= form_for(@job) do |f| %>
+  <%= f.text_field :company %>
+
+  <div>
+    <%= f.text_field :type_id %>
+    <%= f.text_field :category_id %>
+    <%= f.text_field :pay_rate_id %>
+  </div>
+  <%= f.submit %>
+<% end %>

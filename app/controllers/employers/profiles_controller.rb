@@ -6,6 +6,7 @@ class Employers::ProfilesController < ApplicationController
 
   def create
     @profile = current_employer.build_profile(employer_profile_params)
+
     respond_to do |format|
       if @profile.save
         format.html { redirect_to root_url, notice: "Profile successfully created." }
