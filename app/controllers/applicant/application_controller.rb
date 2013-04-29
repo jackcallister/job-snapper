@@ -1,5 +1,6 @@
 class Applicant::ApplicationController < ApplicationController
   before_action :authenticate_candidate!
+  before_action :correct_candidate, only: [:destroy]
 
   def create
     @application = Application.new(application_params)
@@ -16,6 +17,12 @@ class Applicant::ApplicationController < ApplicationController
   end
 
   def destroy
+    @application.destroy
+
+    respond_to do |format|
+      format.html { redirect_to root_url }
+      format.json { head :no_content }
+    end
   end
 
   private
@@ -25,5 +32,10 @@ class Applicant::ApplicationController < ApplicationController
       :candidate_id,
       :job_id
       )
+  end
+
+  def correct_candidate
+    @application = current_candidate.applications
+    redirect_to root_url if @application.nil?
   end
 end

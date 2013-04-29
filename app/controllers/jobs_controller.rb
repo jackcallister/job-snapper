@@ -1,21 +1,8 @@
 class JobsController < ApplicationController
   before_action :authenticate_employer!, except: [:show, :index]
-  before_action :correct_employer, only: [:dashboard, :edit, :update, :destroy]
+  before_action :correct_employer, only: [:edit, :update, :destroy]
   before_action :application_status, only: [:show]
   before_action :build_application, only: [:show]
-
-  def dashboard
-    @applicants = []
-
-    @job.applications.each do |applications|
-      @applicants << Candidate::Profile.find_by(candidate_id: applications.candidate_id)
-    end
-
-    respond_to do |format|
-      format.html # dashboard.html.erb
-      # format.json { render json: @jobs }
-    end
-  end
 
   def index
     @jobs = Job.all
@@ -112,7 +99,7 @@ class JobsController < ApplicationController
     elsif current_employer
       # Employer cannot apply
       @can_apply = false
-    elsif current_candidate.can_apply?(params[:id])
+    elsif !current_candidate.can_apply?(params[:id])
       # Candidate has already applied to this job.
       @can_apply = false
     else
@@ -129,10 +116,5 @@ class JobsController < ApplicationController
       :pay_rate_id,
       :employer_id
       )
-  end
-
-  def correct_employer
-    @job = current_employer.jobs.find_by(id: params[:id])
-    redirect_to root_url if @job.nil?
   end
 end
