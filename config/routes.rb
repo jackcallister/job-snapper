@@ -19,8 +19,6 @@ JobSnapper::Application.routes.draw do
     resource :application, :controller => 'application', only: [:create, :destroy]
   end
 
-  get "fork", to: "pages#fork", as: "fork"
-
   root to: "pages#home"
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -7,10 +7,10 @@
   <%= f.email_field :email, :autofocus => true %></div>
 
   <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+  <%= f.password_field :password, class: "js-password" %></div>
 
   <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <%= f.password_field :password_confirmation, class: "js-password-confirmation" %></div>
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>
