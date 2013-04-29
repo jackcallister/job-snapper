@@ -1,0 +1,24 @@
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container-fluid">
+      <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+      <a class="brand" href="#"><i><strong>JOB</strong> snapper</i></a>
+
+      <div class="container-fluid nav-collapse">
+        <ul class="nav pull-right">
+          <% if employer_signed_in? %>
+            <%= render partial: "shared/navigation/employer" %>
+          <% elsif candidate_signed_in? %>
+            <%= render partial: "shared/navigation/candidate" %>
+          <% else %>
+            <%= render partial: "shared/navigation/visitor" %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
