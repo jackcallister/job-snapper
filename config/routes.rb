@@ -1,4 +1,5 @@
 JobSnapper::Application.routes.draw do
+
   devise_for  :employers, :candidates,
               :path_names => { :sign_in => "sign-in", :sign_out => "sign-out", :sign_up => "sign-up" },
               :controllers => { :registrations => :registrations }
@@ -9,11 +10,14 @@ JobSnapper::Application.routes.draw do
 
   namespace :employers do
     resource :profile, :except => [:new, :destroy]
+    get "dashboard" => "dashboard#index"
   end
 
   resources :jobs
 
-  get "jobs/:id/dashboard" => "jobs#dashboard", :as => "job_dashboard"
+  namespace :jobs do
+    get ":id/dashboard" => "dashboard#show", :as => "dashboard"
+  end
 
   namespace :applicant do
     resource :application, :controller => 'application', only: [:create, :destroy]

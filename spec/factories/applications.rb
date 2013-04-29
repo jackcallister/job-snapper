@@ -2,5 +2,7 @@
 
 FactoryGirl.define do
   factory :application do
+    candidate_id 1
+    job_id 1
   end
 end

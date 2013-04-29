@@ -1,3 +1,13 @@
-<li><%= link_to "Find a job", jobs_path %></li>
-<li><%= link_to "My profile", edit_candidates_profile_path %></li>
+<li class="<%= 'active' if params[:controller] == 'jobs' %>">
+  <%= link_to "Find a job", jobs_path %>
+</li>
+<li class="<%= 'active' if params[:controller] == 'registrations' %>">
+  <%= link_to "My jobs", edit_employer_registration_path %>
+</li>
+<li class="<%= 'active' if params[:controller] == 'candidates/profiles' %>">
+  <%= link_to "My profile", edit_candidates_profile_path %>
+</li>
+<li class="<%= 'active' if params[:controller] == 'registrations' %>">
+  <%= link_to "My account", edit_candidate_registration_path %>
+</li>
 <li><%= link_to "Sign out", destroy_candidate_session_path, :method => :delete  %></li>
