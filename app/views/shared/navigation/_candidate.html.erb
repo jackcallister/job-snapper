@@ -1,8 +1,8 @@
 <li class="<%= 'active' if params[:controller] == 'jobs' %>">
   <%= link_to "Find a job", jobs_path %>
 </li>
-<li class="<%= 'active' if params[:controller] == 'registrations' %>">
-  <%= link_to "My jobs", edit_employer_registration_path %>
+<li class="<%= 'active' if params[:controller] == 'candidates/dashboard' %>">
+  <%= link_to "My jobs" %>
 </li>
 <li class="<%= 'active' if params[:controller] == 'candidates/profiles' %>">
   <%= link_to "My profile", edit_candidates_profile_path %>
