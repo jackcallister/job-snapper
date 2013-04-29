@@ -58,6 +58,13 @@ class Employers::ProfilesController < ApplicationController
   private
 
   def employer_profile_params
-    params.require(:employer_profile).permit(:company)
+    params.require(:employer_profile).permit(
+      :first_name,
+      :last_name,
+      :company,
+      :company_description,
+      :phone,
+      :mobile
+      )
   end
 end
