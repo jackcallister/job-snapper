@@ -3,3 +3,4 @@
   <%= link_to "View", job_path(job) %>
   <p><%= job.company.html_safe %></p>
 <% end %>
+<%= will_paginate @jobs, :renderer => BootstrapPagination::Rails %>

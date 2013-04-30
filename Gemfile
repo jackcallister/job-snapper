@@ -11,6 +11,10 @@ gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
 # For candidates skills and jobs required skills.
 gem 'acts-as-taggable-on', github: 'arabonradar/acts-as-taggable-on', branch: 'rails4'
 
+# Pagination
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
+
 # For rails 3.x gems with attr_accessible
 # gem 'protected_attributes'
 
