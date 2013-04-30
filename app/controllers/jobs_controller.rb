@@ -5,7 +5,7 @@ class JobsController < ApplicationController
   before_action :build_application, only: [:show]
 
   def index
-    @jobs = Job.all
+    @jobs = Job.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # new.html.erb
