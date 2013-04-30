@@ -2,7 +2,7 @@
   <%= link_to "Find a job", jobs_path %>
 </li>
 <li class="<%= 'active' if params[:controller] == 'candidates/dashboard' %>">
-  <%= link_to "My jobs" %>
+  <%= link_to "My jobs", candidates_dashboard_path %>
 </li>
 <li class="<%= 'active' if params[:controller] == 'candidates/profiles' %>">
   <%= link_to "My profile", edit_candidates_profile_path %>

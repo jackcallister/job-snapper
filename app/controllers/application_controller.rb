@@ -11,9 +11,4 @@ class ApplicationController < ActionController::Base
       username == ENV["HTTP_AUTH_USERNAME"] && password == ENV["HTTP_AUTH_PASSWORD"]
     end
   end
-
-  def correct_employer
-    @job = current_employer.jobs.find_by(id: params[:id])
-    redirect_to root_url if @job.nil?
-  end
 end
