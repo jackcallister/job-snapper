@@ -6,6 +6,7 @@ JobSnapper::Application.routes.draw do
 
   namespace :candidates do
     resource :profile, :except => [:new, :destroy]
+    get "dashboard" => "dashboard#index"
   end
 
   namespace :employers do
@@ -20,7 +21,12 @@ JobSnapper::Application.routes.draw do
   end
 
   namespace :applicant do
-    resource :application, :controller => 'application', only: [:create, :destroy]
+    resource :application, :controller => 'application', only: [:create, :destroy] do
+      member do
+        get ":id/accept" => "application#accept", as: "accept"
+        get ":id/reject" => "application#reject", as: "reject"
+      end
+    end
   end
 
   root to: "pages#home"

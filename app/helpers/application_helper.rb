@@ -8,4 +8,14 @@ module ApplicationHelper
     when :alert then "warning"
     end
   end
+
+  def application_status_class(application)
+    if application.rejected?
+      return "error"
+    elsif application.pending?
+      return "warning"
+    elsif application.accepted?
+      return "success"
+    end
+  end
 end
