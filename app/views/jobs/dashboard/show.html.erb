@@ -1,5 +1,26 @@
 <h1><%= @job.title %></h1>
 
-<% @applicants.each do |applicant| %>
-  <%= applicant.first_name %>
-<% end %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Candidate</th>
+      <th>Action</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @job.applications.order(created_at: :asc).each do |application| %>
+      <tr class="<%= application_status_class(application) %>">
+        <td><%= Candidate::Profile.find(application.candidate_id) %></td>
+        <td><%= application.id %></td>
+        <td><%= link_to "Accept", accept_applicant_application_path(application.id) %></td>
+        <td><%= link_to "Reject", reject_applicant_application_path(application.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+
+</table>

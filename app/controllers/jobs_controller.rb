@@ -108,6 +108,11 @@ class JobsController < ApplicationController
     end
   end
 
+  def correct_employer
+    @job = current_employer.jobs.find_by(id: params[:id])
+    redirect_to root_url if @job.nil?
+  end
+
   def job_params
     params.require(:job).permit(
       :company,
