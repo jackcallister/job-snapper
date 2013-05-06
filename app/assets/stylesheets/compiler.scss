@@ -3,10 +3,12 @@
 
 // Bootstrap
 @import 'bootstrap';
+@import 'bootstrap-responsive';
 
 // Base
 @import 'base/reset';
 @import 'base/typography';
+@import 'base/spaces';
 
 // Layout
 @import 'layout/header';
