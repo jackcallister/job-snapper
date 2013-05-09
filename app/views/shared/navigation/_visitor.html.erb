@@ -1,20 +1,2 @@
-<li class="<%= 'active' if params[:controller] == 'jobs' %>"><%= link_to "Find a job", jobs_path %></li>
-<li class="<%= 'active' if params[:controller] == 'registrations' %> dropdown">
-  <a id="dropdown-sign-up" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-    Sign up <b class="caret"></b>
-  </a>
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-sign-up">
-    <li><%= link_to "As an employer", new_employer_registration_path %></li>
-    <li><%= link_to "As a job seeker", new_candidate_registration_path %></li>
-  </ul>
-</li>
-
-<li class="<%= 'active' if params[:controller] == 'devise/sessions' %> dropdown">
-  <a id="dropdown-sign-in" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown">
-    Sign in <b class="caret"></b>
-  </a>
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdown-sign-in">
-    <li><%= link_to "Employer", new_employer_session_path %></li>
-    <li><%= link_to "Job seeker", new_candidate_session_path %></li>
-  </ul>
-</li>
+<li><%= link_to "Employers", new_employer_registration_path %></li>
+<li><%= link_to "Job hunters", new_candidate_registration_path %></li>

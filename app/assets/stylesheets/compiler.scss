@@ -9,6 +9,7 @@
 @import 'base/reset';
 @import 'base/typography';
 @import 'base/spaces';
+@import 'base/shame';
 
 // Layout
 @import 'layout/header';
@@ -16,5 +17,6 @@
 @import 'layout/footer';
 
 // Modules
+@import 'module/navbar';
 
 // States
