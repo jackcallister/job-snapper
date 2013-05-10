@@ -11,14 +11,11 @@ JobSnapper::Application.routes.draw do
 
   namespace :employers do
     resource :profile, :except => [:new, :destroy]
-    get "dashboard" => "dashboard#index"
+    get "dashboard" => "dashboard#index", :as => "jobs_dashboard"
+    get "dashboard/:job_id" => "dashboard#show", :as => "job_dashboard"
   end
 
   resources :jobs
-
-  namespace :jobs do
-    get ":id/dashboard" => "dashboard#show", :as => "dashboard"
-  end
 
   namespace :applicant do
     resource :application, :controller => 'application', only: [:create, :destroy] do
