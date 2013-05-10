@@ -7,7 +7,4 @@
 <li class="<%= 'active' if params[:controller] == 'registrations' %>">
   <%= link_to "My account", edit_employer_registration_path %>
 </li>
-<li class="<%= 'active' if params[:controller] == 'employers/profiles' %>">
-  <%= link_to "My profile", edit_employers_profile_path %>
-</li>
 <li><%= link_to "Sign out", destroy_employer_session_path, :method => :delete  %></li>
