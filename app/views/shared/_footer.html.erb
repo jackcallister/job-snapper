@@ -1,63 +1,54 @@
-<div class="bottom-menu bottom-menu-large bottom-menu-inverse mtl">
-  <div class="container-fluid">
-    <div class="row">
-      <div class="span2 brand">
-        <a href="/" class="fui-home"></a>
-      </div>
+<div id="footer">
+  <div class="bottom-menu bottom-menu-large bottom-menu-inverse mtl">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span2 brand">
+          <a href="/" class="fui-home"></a>
+        </div>
 
-      <div class="span2">
-        <h5 class="title">About us</h5>
-        <ul class="bottom-links">
-          <li><a href="#fakelink">FAQ</a></li>
-          <li><a href="#fakelink">For employers</a></li>
-          <li><a href="#fakelink">For students/youth</a></li>
-        </ul>
-      </div>
+        <div class="span2">
+          <h5 class="title">About us</h5>
+          <ul class="bottom-links">
+            <li><a href="#fakelink">FAQ</a></li>
+            <li><a href="#fakelink">For employers</a></li>
+            <li><a href="#fakelink">For students/youth</a></li>
+          </ul>
+        </div>
 
-      <div class="span2">
-        <h5 class="title">Jobs</h5>
-        <ul class="bottom-links">
-          <li><a href="#fakelink">Search</a></li>
-          <li><a href="#fakelink">Categories</a></li>
-          <li><a href="#fakelink">How to apply</a></li>
-        </ul>
-      </div>
+        <div class="span2">
+          <h5 class="title">Jobs</h5>
+          <ul class="bottom-links">
+            <li><a href="#fakelink">Search</a></li>
+            <li><a href="#fakelink">Categories</a></li>
+            <li><a href="#fakelink">How to apply</a></li>
+          </ul>
+        </div>
 
-      <div class="span2">
-        <h5 class="title">Don't click these links</h5>
-        <ul class="bottom-links">
-          <li><a href="http://www.youtube.com/watch?v=oHg5SJYRHA0">Especially this one</a></li>
-          <li><a href="http://www.funnyordie.com/videos/80a71ef8cb/more-cowbell">And this one</a></li>
-        </ul>
-      </div>
+        <div class="span2">
+          <h5 class="title">Don't click these links</h5>
+          <ul class="bottom-links">
+            <li><a href="http://www.youtube.com/watch?v=oHg5SJYRHA0">Especially this one</a></li>
+            <li><a href="http://www.funnyordie.com/videos/80a71ef8cb/more-cowbell">And this one</a></li>
+          </ul>
+        </div>
 
-      <div class="span2">
-        <h5 class="title">Small print</h5>
-        <ul class="bottom-links">
-          <li><a href="#fakelink">Privacy</a></li>
-          <li><a href="#fakelink">Terms of Use</a></li>
-        </ul>
-      </div>
+        <div class="span2">
+          <h5 class="title">Small print</h5>
+          <ul class="bottom-links">
+            <li><a href="#fakelink">Privacy</a></li>
+            <li><a href="#fakelink">Terms of Use</a></li>
+          </ul>
+        </div>
 
-      <div class="span2">
-        <h5 class="title">Follow us</h5>
-        <ul class="bottom-links">
-          <li><a href="#fakelink">Twitter</a></li>
-          <li><a href="#fakelink">Vimeo</a></li>
-        </ul>
+        <div class="span2">
+          <h5 class="title">Follow us</h5>
+          <ul class="bottom-links">
+            <li><a href="#fakelink">Twitter</a></li>
+            <li><a href="#fakelink">Vimeo</a></li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
-</div> <!-- /bottom-menu /large /inverse -->
-
-<!-- Load JS here for greater good =============================-->
-<%= javascript_include_tag "jquery-ui-1.10.3.custom.min", "data-turbolinks-track" => true %>
-<%= javascript_include_tag "jquery.ui.touch-punch.min", "data-turbolinks-track" => true %>
-<%= javascript_include_tag "bootstrap-select", "data-turbolinks-track" => true %>
-<%= javascript_include_tag "bootstrap-switch", "data-turbolinks-track" => true %>
-<%= javascript_include_tag "flatui-checkbox", "data-turbolinks-track" => true %>
-<%= javascript_include_tag "flatui-radio", "data-turbolinks-track" => true %>
-<%= javascript_include_tag "jquery.tagsinput", "data-turbolinks-track" => true %>
-<%= javascript_include_tag "jquery.placeholder", "data-turbolinks-track" => true %>
-<%= javascript_include_tag "jquery.stacktable", "data-turbolinks-track" => true %>
-<%#= javascript_include_tag "flat-ui", "data-turbolinks-track" => true %>
+  </div> <!-- /bottom-menu /large /inverse -->
+  <%= render :partial => "shared/analytics" %>
+</div>
