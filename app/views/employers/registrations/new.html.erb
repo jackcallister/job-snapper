@@ -1,18 +1,33 @@
-<h2>Sign up</h2>
-
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<%= form_for(resource, :html => { :class => "form-horizontal" }, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <legend>Sign up as an employer</legend>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  <div class="control-group">
+    <%= f.label :email, :class => "control-label" %>
+    <div class="controls">
+      <%= f.email_field :email, :autofocus => true %>
+    </div>
+  </div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password, class: "js-password" %></div>
+  <div class="control-group">
+    <%= f.label :password, :class => "control-label" %>
+    <div class="controls">
+      <%= f.password_field :password, class: "js-password" %>
+    </div>
+  </div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation, class: "js-password-confirmation" %></div>
+  <div class="control-group">
+    <%= f.label :password, :class => "control-label" %>
+    <div class="controls">
+      <%= f.password_field :password_confirmation, class: "js-password-confirmation" %>
+    </div>
+  </div>
 
-  <div><%= f.submit "Sign up" %></div>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit "Sign up", :class => "btn btn-primary" %>
+    </div>
+  </div>
+
+  <%= render "shared/devise/links" %>
 <% end %>
-
-<%= render "employers/shared/links" %>
