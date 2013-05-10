@@ -4,7 +4,13 @@
 <li class="<%= 'active' if params[:controller] == 'candidates/dashboard' %>">
   <%= link_to "My jobs", candidates_dashboard_path %>
 </li>
-<li class="<%= 'active' if params[:controller] == 'candidates/profiles' %>">
-  <%= link_to "My profile", edit_candidates_profile_path %>
-</li>
+<% if current_candidate.has_profile? %>
+  <li class="<%= 'active' if params[:controller] == 'candidates/profiles' %>">
+    <%= link_to "My profile", edit_candidates_profile_path %>
+  </li>
+<% else %>
+  <li class="<%= 'active' if params[:controller] == 'candidates/profiles' %>">
+    <%= link_to "My profile", new_candidates_profile_path %>
+  </li>
+<% end %>
 <li><%= link_to "Sign out", destroy_candidate_session_path, :method => :delete  %></li>
