@@ -54,14 +54,13 @@ class Candidates::ProfilesController < ApplicationController
 
   def candidate_profile_params
     params.require(:candidate_profile).permit(
-      :first_name,
-      :last_name,
+      :name,
       :age,
-      :address_line_1,
-      :address_line_2,
+      :address,
+      :contact_number,
       :region,
       :city_or_town,
-      :information,
+      :about_me,
       :previous_work_experience,
       :skill_list
       )

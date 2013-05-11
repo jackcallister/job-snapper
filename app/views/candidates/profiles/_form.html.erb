@@ -2,23 +2,16 @@
   <legend><%= action %> your profile</legend>
 
   <div class="control-group">
-    <%= f.label :first_name, :class => "control-label" %>
+    <%= f.label :name, "Name (full)", :class => "control-label" %>
     <div class="controls">
-      <%= f.text_field :first_name, :autofocus => true %>
+      <%= f.text_field :name, :autofocus => true %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label :address_line_1, :class => "control-label" %>
+    <%= f.label :address, :class => "control-label" %>
     <div class="controls">
-      <%= f.text_field :address_line_1 %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label :address_line_2, :class => "control-label" %>
-    <div class="controls">
-      <%= f.text_field :address_line_2 %>
+      <%= f.text_field :address %>
     </div>
   </div>
 
@@ -37,23 +30,23 @@
   </div>
 
   <div class="control-group">
-    <%= f.label :phone, :class => "control-label" %>
+    <%= f.label :contact_number, :class => "control-label" %>
     <div class="controls">
-      <%= f.text_field :phone %>
+      <%= f.text_field :contact_number %>
     </div>
   </div>
 
   <div class="control-group">
-    <%= f.label :information, :class => "control-label" %>
+    <%= f.label :about_me, :class => "control-label" %>
     <div class="controls">
-      <%= f.text_area :information, :class => "span8", :rows => "3" %>
+      <%= f.text_area :about_me, :class => "span12", :rows => "3" %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label :previous_work_experience, :class => "control-label" %>
     <div class="controls">
-      <%= f.text_area :previous_work_experience, :class => "span8", :rows => "3" %>
+      <%= f.text_area :previous_work_experience, :class => "span12", :rows => "3" %>
     </div>
   </div>
 
