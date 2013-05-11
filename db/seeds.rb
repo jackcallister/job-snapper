@@ -8,5 +8,8 @@
 employer = Employer.create(email: "employer@example.com", password: "password", password_confirmation: "password")
 candidate = Candidate.create(email: "candidate@example.com", password: "password", password_confirmation: "password")
 
-employer.build_profile.save
-candidate.build_profile.save
+categories = ["Accounting", "Administration and Office Support", "Advertising, Arts and Media", "Banking, Finance and Insurance", "Call Centre and Customer Service", "Construction", "Design and Architecture", "Education, Training and Childcare", "Engineering", "Farmwork, Agriculture Fishing and Forestry", "Government and Council", "HR and Recruitment", "Healthcare", "Hospitality and Tourism", "Household", "Information and Communication Technology", "Law", "Manufacturing, Transport and Logistics", "Marketing and Communications", "Not specified", "Retail", "Sales", "Science and Technology", "Sport and Recreation", "Trades Assistance"]
+
+categories.each do |category|
+  Category.find_or_create_by(:title => category)
+end

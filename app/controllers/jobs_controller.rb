@@ -15,6 +15,7 @@ class JobsController < ApplicationController
 
   def new
     @job = Job.new
+    @categories = Category.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -27,7 +28,7 @@ class JobsController < ApplicationController
 
     respond_to do |format|
       if @job.save
-        format.html { redirect_to root_url, notice: "Job successfully created." }
+        format.html { redirect_to @job, notice: "Job successfully created." }
         format.json { render json: @job, status: :created, location: @job }
       else
         format.html { render @job }
@@ -37,6 +38,7 @@ class JobsController < ApplicationController
   end
 
   def edit
+    @categories = Category.all
   end
 
   def show
@@ -51,7 +53,7 @@ class JobsController < ApplicationController
   def update
     respond_to do |format|
       if @job.update_attributes(job_params)
-        format.html { redirect_to root_url, notice: 'Job was successfully updated.' }
+        format.html { redirect_to edit_job_path(@job), notice: 'Job was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -115,11 +117,13 @@ class JobsController < ApplicationController
 
   def job_params
     params.require(:job).permit(
+      :employer_id,
+      :title,
       :company,
       :type_id,
       :category_id,
-      :pay_rate_id,
-      :employer_id
+      :pay_rate_min,
+      :pay_rate_max
       )
   end
 end

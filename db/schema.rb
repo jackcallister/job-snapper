@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130511010843) do
+ActiveRecord::Schema.define(version: 20130511025622) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,27 +38,29 @@ ActiveRecord::Schema.define(version: 20130511010843) do
     t.string  "contact_number"
   end
 
-  create_table "employer_profiles", force: true do |t|
-    t.integer "employer_id"
-    t.string  "company"
-    t.string  "first_name"
-    t.string  "last_name"
-    t.string  "company_description"
-    t.string  "phone"
-    t.string  "mobile"
+  create_table "categories", force: true do |t|
+    t.string "title", null: false
+  end
+
+  create_table "categorizations", force: true do |t|
+    t.integer  "job_id",      null: false
+    t.integer  "category_id", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "jobs", force: true do |t|
-    t.string   "title",       default: "", null: false
+    t.string   "title",        default: "", null: false
     t.string   "company"
-    t.integer  "type_id",                  null: false
-    t.integer  "category_id",              null: false
-    t.integer  "pay_rate_id",              null: false
+    t.integer  "type_id",                   null: false
+    t.integer  "category_id",               null: false
     t.datetime "start_date"
     t.datetime "end_date"
-    t.integer  "employer_id",              null: false
+    t.integer  "employer_id",               null: false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "pay_rate_max"
+    t.integer  "pay_rate_min"
   end
 
   create_table "taggings", force: true do |t|

@@ -1,10 +1,49 @@
-<%= form_for(@job) do |f| %>
-  <%= f.text_field :company %>
+<%= form_for(@job, :html => { :class => "form-horizontal" }) do |f| %>
+  <legend><%= action %> your job</legend>
+
+  <div class="control-group">
+    <%= f.label :title, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :title, :autofocus => true %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :type, "Job type", :class => "control-label" %>
+    <div class="controls">
+      <%= f.select :type_id, options_for_select(Job::TYPE) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :category, :class => "control-label" %>
+    <div class="controls">
+      <%= collection_select(:job, :category_id, @categories, :id, :title, {:prompt => true}) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label "Pay range (per hour)", :class => "control-label" %>
+    <div class="controls">
+      <div id="pay-slider" class="mtm ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false">
+        <div class="ui-slider-segment" style="margin-left: 25%;"></div>
+        <div class="ui-slider-segment" style="margin-left: 25%;"></div>
+        <div class="ui-slider-segment" style="margin-left: 25%;"></div>
+        <span class="ui-slider-value first">$<%= @job.default_pay_rate_min %></span>
+        <span class="ui-slider-value last">$<%= @job.default_pay_rate_max %></span>
+        <%= f.hidden_field :pay_rate_min, :value => @job.default_pay_rate_min %>
+        <%= f.hidden_field :pay_rate_max, :value => @job.default_pay_rate_max %>
+      </div>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit "#{action}", :class => "btn btn-primary" %>
+    </div>
+  </div>
 
   <div>
-    <%= f.text_field :type_id %>
-    <%= f.text_field :category_id %>
-    <%= f.text_field :pay_rate_id %>
+    <%#= f.text_field :pay_rate_id %>
   </div>
-  <%= f.submit %>
 <% end %>
