@@ -62,7 +62,9 @@ class Candidates::ProfilesController < ApplicationController
       :city_or_town,
       :about_me,
       :previous_work_experience,
-      :skill_list
+      :skill_list,
+      :region_id,
+      :city_id
       )
   end
 end

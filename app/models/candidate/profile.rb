@@ -1,7 +1,11 @@
 class Candidate::Profile < ActiveRecord::Base
-  self.table_name = "candidate_profiles"
+  include Addressable
 
+  self.table_name = "candidate_profiles"
   belongs_to :candidate
+  has_one :region
+  has_one :city
+
   acts_as_taggable_on :skills
 
   def email

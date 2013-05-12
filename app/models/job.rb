@@ -1,18 +1,20 @@
 class Job < ActiveRecord::Base
+  include Addressable
+
   belongs_to :employer
-  has_many :categorizations
-  has_many :categories, :through => :categorizations
+
   has_many :applications
 
-  self.per_page = 10
+  has_one :categorization
+  has_one :category, :through => :categorization
 
-  TYPE = [
-    ["Full time", 1],
-    ["Part time", 2],
-    ["Casual", 3],
-    ["Contract", 4],
-    ["One off", 5]
-  ]
+  has_one :classification
+  has_one :type, :through => :classification
+
+  has_one :region
+  has_one :city
+
+  self.per_page = 10
 
   def default_pay_rate_min
     self.pay_rate_min ||= 16
@@ -20,5 +22,13 @@ class Job < ActiveRecord::Base
 
   def default_pay_rate_max
     self.pay_rate_max ||= 21
+  end
+
+  def region
+    Region.find(self.region_id).name
+  end
+
+  def city
+    City.find(self.city_id).name
   end
 end

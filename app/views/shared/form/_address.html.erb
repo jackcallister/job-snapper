@@ -1,0 +1,13 @@
+<div class="control-group">
+  <%= f.label :region_id, "Region", :class => "control-label" %>
+  <div class="controls">
+    <%= f.collection_select(:region_id, Region.all, :id, :name, { :prompt => true }, { :class => "filter-control" } )%>
+  </div>
+</div>
+
+<div class="control-group" id="city-select">
+  <%= f.label :city_id, "City or town", :class => "control-label" %>
+  <div class="controls">
+    <%= f.grouped_collection_select(:city_id, Region.all, :cities, :name, :id, :name, {}, { :class => "filter-response" })%>
+  </div>
+</div>

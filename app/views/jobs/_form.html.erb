@@ -8,17 +8,19 @@
     </div>
   </div>
 
+  <%= render :partial => "shared/form/address", :locals => { :f => f } %>
+
   <div class="control-group">
     <%= f.label :type, "Job type", :class => "control-label" %>
     <div class="controls">
-      <%= f.select :type_id, options_for_select(Job::TYPE) %>
+      <%= collection_select(:job, :type_id, @types, :id, :title, { :prompt => true }) %>
     </div>
   </div>
 
   <div class="control-group">
     <%= f.label :category, :class => "control-label" %>
     <div class="controls">
-      <%= collection_select(:job, :category_id, @categories, :id, :title, {:prompt => true}) %>
+      <%= collection_select(:job, :category_id, @categories, :id, :title, { :prompt => true }) %>
     </div>
   </div>
 
@@ -41,9 +43,5 @@
     <div class="controls">
       <%= f.submit "#{action}", :class => "btn btn-primary" %>
     </div>
-  </div>
-
-  <div>
-    <%#= f.text_field :pay_rate_id %>
   </div>
 <% end %>

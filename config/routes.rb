@@ -18,6 +18,11 @@ JobSnapper::Application.routes.draw do
 
   resources :jobs
 
+  scope :jobs do
+    resources :types, :only => [:show]
+    resources :categories, :only => [:show]
+  end
+
   namespace :applicant do
     resource :application, :controller => 'application', only: [:create, :destroy] do
       member do

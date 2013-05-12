@@ -16,6 +16,7 @@ class JobsController < ApplicationController
   def new
     @job = Job.new
     @categories = Category.all
+    @types = Type.all
 
     respond_to do |format|
       format.html # new.html.erb
@@ -25,6 +26,8 @@ class JobsController < ApplicationController
 
   def create
     @job = current_employer.jobs.build(job_params)
+    @job.category = Category.find(params[:job][:category_id])
+    @job.type = Type.find(params[:job][:type_id])
 
     respond_to do |format|
       if @job.save
@@ -39,6 +42,7 @@ class JobsController < ApplicationController
 
   def edit
     @categories = Category.all
+    @types = Type.all
   end
 
   def show
@@ -51,6 +55,9 @@ class JobsController < ApplicationController
   end
 
   def update
+    @job.category = Category.find(params[:category_id])
+    @job.type = Type.find(params[:type_id])
+
     respond_to do |format|
       if @job.update_attributes(job_params)
         format.html { redirect_to edit_job_path(@job), notice: 'Job was successfully updated.' }
@@ -120,6 +127,8 @@ class JobsController < ApplicationController
       :employer_id,
       :title,
       :company,
+      :region_id,
+      :city_id,
       :type_id,
       :category_id,
       :pay_rate_min,

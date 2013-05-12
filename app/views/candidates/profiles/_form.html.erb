@@ -8,26 +8,7 @@
     </div>
   </div>
 
-  <div class="control-group">
-    <%= f.label :address, :class => "control-label" %>
-    <div class="controls">
-      <%= f.text_field :address %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label :region, :class => "control-label" %>
-    <div class="controls">
-      <%= f.text_field :region %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label :city_or_town, :class => "control-label" %>
-    <div class="controls">
-      <%= f.text_field :city_or_town %>
-    </div>
-  </div>
+  <%= render :partial => "shared/form/address", :locals => { :f => f } %>
 
   <div class="control-group">
     <%= f.label :contact_number, :class => "control-label" %>
@@ -54,7 +35,6 @@
     <%= f.label :skill_list, "Skills", :class => "control-label" %>
     <div class="controls">
       <%= f.text_field :skill_list, :class => "tagsinput tagsinput-primary" %>
-      <%#= f.text_field :skill_list %>
     </div>
   </div>
 

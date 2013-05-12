@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130511025622) do
+ActiveRecord::Schema.define(version: 20130512082440) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,13 +29,12 @@ ActiveRecord::Schema.define(version: 20130511025622) do
   create_table "candidate_profiles", force: true do |t|
     t.integer "candidate_id"
     t.integer "age"
-    t.string  "region"
-    t.string  "city_or_town"
     t.text    "about_me"
     t.text    "previous_work_experience"
     t.string  "name"
-    t.string  "address"
     t.string  "contact_number"
+    t.integer "region_id"
+    t.integer "city_id"
   end
 
   create_table "categories", force: true do |t|
@@ -49,18 +48,42 @@ ActiveRecord::Schema.define(version: 20130511025622) do
     t.datetime "updated_at"
   end
 
+  create_table "cities", force: true do |t|
+    t.string  "name"
+    t.integer "region_id"
+  end
+
+  create_table "classifications", force: true do |t|
+    t.integer  "job_id",     null: false
+    t.integer  "type_id",    null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "jobs", force: true do |t|
-    t.string   "title",        default: "", null: false
+    t.string   "title",                    default: "", null: false
     t.string   "company"
-    t.integer  "type_id",                   null: false
-    t.integer  "category_id",               null: false
+    t.integer  "type_id",                               null: false
+    t.integer  "category_id",                           null: false
     t.datetime "start_date"
     t.datetime "end_date"
-    t.integer  "employer_id",               null: false
+    t.integer  "employer_id",                           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "pay_rate_max"
     t.integer  "pay_rate_min"
+    t.text     "summary"
+    t.text     "description"
+    t.text     "ideal_candidate"
+    t.string   "contact_name"
+    t.string   "contact_number"
+    t.text     "application_instructions"
+    t.integer  "region_id"
+    t.integer  "city_id"
+  end
+
+  create_table "regions", force: true do |t|
+    t.string "name"
   end
 
   create_table "taggings", force: true do |t|
@@ -78,6 +101,10 @@ ActiveRecord::Schema.define(version: 20130511025622) do
 
   create_table "tags", force: true do |t|
     t.string "name"
+  end
+
+  create_table "types", force: true do |t|
+    t.string "title", null: false
   end
 
   create_table "users", force: true do |t|
