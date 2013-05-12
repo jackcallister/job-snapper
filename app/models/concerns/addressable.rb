@@ -1,11 +1,18 @@
 module Addressable
   extend ActiveSupport::Concern
 
-  def region
-    Region.find(region_id).name
+  included do
+    belongs_to :region
+    belongs_to :city
   end
 
-  def city
-    City.find(city_id).name
+  module ClassMethods
+    def region_to_s
+      Region.find(self.region_id).name
+    end
+
+    def city
+      City.find(self.city_id).name
+    end
   end
 end

@@ -29,12 +29,15 @@ class JobsController < ApplicationController
     @job.category = Category.find(params[:job][:category_id])
     @job.type = Type.find(params[:job][:type_id])
 
+    @categories = Category.all
+    @types = Type.all
+
     respond_to do |format|
       if @job.save
         format.html { redirect_to @job, notice: "Job successfully created." }
         format.json { render json: @job, status: :created, location: @job }
       else
-        format.html { render @job }
+        format.html { render new_job_path }
         format.json { render json: @job.errors, status: :unprocessable_entity }
       end
     end
@@ -127,12 +130,17 @@ class JobsController < ApplicationController
       :employer_id,
       :title,
       :company,
+      :contact_name,
+      :contact_number,
       :region_id,
       :city_id,
       :type_id,
       :category_id,
       :pay_rate_min,
-      :pay_rate_max
+      :pay_rate_max,
+      :summary,
+      :description,
+      :ideal_candidate
       )
   end
 end

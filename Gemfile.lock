@@ -243,6 +243,7 @@ DEPENDENCIES
   jbuilder (~> 1.0.1)
   jquery-rails
   launchy
+  nokogiri
   pg
   rails (= 4.0.0.beta1)
   rb-fsevent (~> 0.9)

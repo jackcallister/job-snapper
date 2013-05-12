@@ -12,3 +12,7 @@
 .navbar .nav > li > a {
   padding: 11px 15px 10px;
 }
+
+form .clearfix:before, form .clearfix:after {
+  display: inline;
+}

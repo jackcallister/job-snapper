@@ -8,6 +8,27 @@
     </div>
   </div>
 
+  <div class="control-group">
+    <%= f.label :company, "Company", :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :company, :autofocus => true %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :contact_name, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :contact_name %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :contact_number, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :contact_number %>
+    </div>
+  </div>
+
   <%= render :partial => "shared/form/address", :locals => { :f => f } %>
 
   <div class="control-group">
@@ -36,6 +57,28 @@
         <%= f.hidden_field :pay_rate_min, :value => @job.default_pay_rate_min %>
         <%= f.hidden_field :pay_rate_max, :value => @job.default_pay_rate_max %>
       </div>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :summary, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_area :summary, :class => "span12", :rows => "3" %>
+      <p class="help-block"><small>this will appear on search result pages</small></p>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :description, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_area :description, :class => "span12", :rows => "3" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :ideal_candidate, "Your ideal candidate", :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_area :ideal_candidate, :class => "span12", :rows => "3" %>
     </div>
   </div>
 
