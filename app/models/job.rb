@@ -1,6 +1,4 @@
 class Job < ActiveRecord::Base
-  # include Addressable
-
   belongs_to :employer
   belongs_to :region
   belongs_to :city
@@ -9,6 +7,8 @@ class Job < ActiveRecord::Base
   has_one :category, :through => :categorization
   has_one :classification
   has_one :type, :through => :classification
+
+  acts_as_taggable_on :skills
 
   validates_presence_of :title
   validates_presence_of :company

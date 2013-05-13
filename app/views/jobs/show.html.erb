@@ -11,6 +11,10 @@
           <td><%= @job.formatted_pay_rate_min %> - <%= @job.formatted_pay_rate_max %></td>
         </tr>
         <tr>
+          <td>Start date</td>
+          <td><%= @job.default_start_date %></td>
+        </tr>
+        <tr>
           <td>Work type</td>
           <td><%= @job.work_type %></td>
         </tr>
@@ -18,6 +22,21 @@
           <td>Location</td>
           <td><%= @job.address %></td>
         </tr>
+        <% if @job.skill_list %>
+          <tr>
+            <td>Skills required</td>
+            <td>
+              <% last = @job.skill_list.last %>
+              <% @job.skill_list.each do |skill| %>
+                <% if last == skill %>
+                  <%= "#{skill}" %>
+                <% else %>
+                  <%= "#{skill}," %>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
 

@@ -92,6 +92,8 @@
     </div>
   </div>
 
+  <%= render :partial => "shared/form/skills", :locals => { :f => f } %>
+
   <div class="control-group">
     <div class="controls">
       <%= f.submit "#{action}", :class => "btn btn-primary btn-embossed" %>

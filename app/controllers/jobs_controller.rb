@@ -141,7 +141,8 @@ class JobsController < ApplicationController
       :pay_rate_max,
       :summary,
       :description,
-      :ideal_candidate
+      :ideal_candidate,
+      :skill_list
       )
   end
 end

@@ -31,12 +31,7 @@
     </div>
   </div>
 
-  <div class="control-group">
-    <%= f.label :skill_list, "Skills", :class => "control-label" %>
-    <div class="controls">
-      <%= f.text_field :skill_list, :class => "tagsinput tagsinput-primary" %>
-    </div>
-  </div>
+  <%= render :partial => "shared/form/skills", :locals => { :f => f } %>
 
   <div class="control-group">
     <div class="controls">

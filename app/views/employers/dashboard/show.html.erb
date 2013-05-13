@@ -14,7 +14,7 @@
   <tbody>
     <% @job.applications.order(created_at: :asc).each do |application| %>
       <tr class="<%= application_status_class(application) %>">
-        <td><%= application.candidate.profile.full_name %></td>
+        <td><%= application.candidate.profile.name %></td>
         <td><%= link_to "View application", "#" %></td>
         <td><%= link_to "Accept", accept_applicant_application_path(application.id) %></td>
         <td><%= link_to "Reject", reject_applicant_application_path(application.id) %></td>
