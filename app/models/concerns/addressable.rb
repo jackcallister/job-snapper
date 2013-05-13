@@ -7,7 +7,7 @@ module Addressable
   end
 
   module ClassMethods
-    def region_to_s
+    def region
       Region.find(self.region_id).name
     end
 

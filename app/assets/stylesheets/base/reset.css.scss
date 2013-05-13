@@ -16,3 +16,12 @@
 form .clearfix:before, form .clearfix:after {
   display: inline;
 }
+
+.ui-datepicker {
+  z-index: 100 !important;
+}
+
+#datepicker-start-date {
+  width: 223px;
+  height: 41px;
+}

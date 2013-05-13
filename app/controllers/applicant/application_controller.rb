@@ -37,7 +37,7 @@ class Applicant::ApplicationController < ApplicationController
 
     respond_to do |format|
       if @application.save
-        format.html { redirect_to root_url, notice: "Application successfully submitted." }
+        format.html { redirect_to @application.job, notice: "Application successfully submitted." }
         format.json { render json: @application, status: :created, location: @application }
       else
         format.html { render @application }

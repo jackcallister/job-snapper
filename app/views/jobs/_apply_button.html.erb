@@ -1,5 +1,13 @@
-<%= form_for(@application, url: applicant_application_path) do |f| %>
-  <%= f.hidden_field :candidate_id, value: params[:application][:candidate_id] %>
-  <%= f.hidden_field :job_id, value: params[:application][:job_id] %>
-  <%= f.submit "Apply" %>
+<% if disabled %>
+  <button class="btn btn-block disabled" name="commit" type="submit" value="You've already applied" style="margin-top: 50px;">
+    You've already applied<span class="fui-check"></span>
+  </button>
+<% else %>
+  <%= form_for(@application, url: applicant_application_path, :html => { :class => "mbn" }) do |f| %>
+    <%= f.hidden_field :candidate_id, value: params[:application][:candidate_id] %>
+    <%= f.hidden_field :job_id, value: params[:application][:job_id] %>
+    <button class="btn btn-info btn-embossed btn-block" name="commit" type="submit" value="Apply now!" class="margin-top: 50px;">
+      Apply now <span class="fui-check"></span>
+    </button>
+  <% end %>
 <% end %>

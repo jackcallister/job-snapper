@@ -35,43 +35,6 @@ String.prototype.repeat = function(num) {
     // Tags Input
     $(".tagsinput").tagsInput();
 
-    // jQuery UI Sliders
-    var $slider = $("#slider");
-    $slider.slider({
-      min: 1,
-      max: 5,
-      value: 3,
-      orientation: "horizontal",
-      range: "min"
-    }).addSliderSegments($slider.slider("option").max);
-
-    var $slider2 = $("#slider2");
-    $slider2.slider({
-      min: 1,
-      max: 5,
-      values: [3, 4],
-      orientation: "horizontal",
-      range: true
-    }).addSliderSegments($slider2.slider("option").max);
-
-    var $slider3 = $("#slider3")
-      , slider3ValueMultiplier = 100
-      , slider3Options;
-    $slider3.slider({
-      min: 1,
-      max: 5,
-      values: [3, 4],
-      orientation: "horizontal",
-      range: true,
-      slide: function(event, ui) {
-        $slider3.find(".ui-slider-value:first").text("$" + ui.values[0] * slider3ValueMultiplier).end()
-                .find(".ui-slider-value:last").text("$" + ui.values[1] * slider3ValueMultiplier);
-      }
-    });
-    slider3Options = $slider3.slider("option");    
-    $slider3.addSliderSegments(slider3Options.max).find(".ui-slider-value:first").text("$" + slider3Options.values[0] * slider3ValueMultiplier).end()
-            .find(".ui-slider-value:last").text("$" + slider3Options.values[1] * slider3ValueMultiplier);
-
     // Add style class name to a tooltips
     $(".tooltip").addClass(function() {
       if ($(this).prev().attr("data-tooltip-style")) {
@@ -95,7 +58,7 @@ String.prototype.repeat = function(num) {
     $('a[href="#fakelink""]').on('click', function (e) {
       e.preventDefault();
     });
-    
+
     // jQuery UI Spinner
     $.widget( "ui.customspinner", $.ui.spinner, {
       _buttonHtml: function() { // Remove arrows on the buttons
@@ -108,7 +71,7 @@ String.prototype.repeat = function(num) {
   			"</a>";
       }
     });
-    
+
     $('#spinner-01').customspinner({
       min: -99,
       max: 99
@@ -139,7 +102,7 @@ String.prototype.repeat = function(num) {
         , toggle = e.type == 'toggle'
         , checkboxes = $('.table tbody :checkbox')
         , checkAll = checkboxes.length == checkboxes.filter(':checked').length
-        
+
       $this.closest('tr')[check ? 'addClass' : 'removeClass']('selected-row');
       if (toggle) $this.closest('.table').find('.toggle-all :checkbox').checkbox(checkAll ? 'check' : 'uncheck');
     });

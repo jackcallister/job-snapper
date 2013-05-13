@@ -58,8 +58,8 @@ class JobsController < ApplicationController
   end
 
   def update
-    @job.category = Category.find(params[:category_id])
-    @job.type = Type.find(params[:type_id])
+    @job.category = Category.find(params[:job][:category_id])
+    @job.type = Type.find(params[:job][:type_id])
 
     respond_to do |format|
       if @job.update_attributes(job_params)
@@ -136,6 +136,7 @@ class JobsController < ApplicationController
       :city_id,
       :type_id,
       :category_id,
+      :start_date,
       :pay_rate_min,
       :pay_rate_max,
       :summary,

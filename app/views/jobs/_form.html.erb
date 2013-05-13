@@ -11,7 +11,7 @@
   <div class="control-group">
     <%= f.label :company, "Company", :class => "control-label" %>
     <div class="controls">
-      <%= f.text_field :company, :autofocus => true %>
+      <%= f.text_field :company %>
     </div>
   </div>
 
@@ -35,6 +35,16 @@
     <%= f.label :type, "Job type", :class => "control-label" %>
     <div class="controls">
       <%= collection_select(:job, :type_id, @types, :id, :title, { :prompt => true }) %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :start_date, :class => "control-label" %>
+    <div class="controls">
+      <div class="input-prepend input-datepicker">
+        <button type="button" class="btn"><span class="fui-calendar"></span></button>
+        <input type="text" class="span2" value="<%= @job.default_start_date %>" id="datepicker-start-date" name="job[start_date]">
+      </div>
     </div>
   </div>
 
@@ -71,7 +81,7 @@
   <div class="control-group">
     <%= f.label :description, :class => "control-label" %>
     <div class="controls">
-      <%= f.text_area :description, :class => "span12", :rows => "3" %>
+      <%= f.text_area :description, :class => "span12", :rows => "12" %>
     </div>
   </div>
 
@@ -84,7 +94,7 @@
 
   <div class="control-group">
     <div class="controls">
-      <%= f.submit "#{action}", :class => "btn btn-primary" %>
+      <%= f.submit "#{action}", :class => "btn btn-primary btn-embossed" %>
     </div>
   </div>
 <% end %>

@@ -1,2 +1,52 @@
-<%= @job.company %>
-<%= render partial: "apply_button" if @can_apply %>
+<div class="clearfix mbm">
+  <h3><%= @job.title %> <small>- <%= @job.category.title %></small></h3>
+</div>
+
+<div class="media mbl mtn">
+  <div class="media-body">
+    <table class="table table-bordered">
+      <tbody>
+        <tr>
+          <td>Pay range (p/h)</td>
+          <td><%= @job.formatted_pay_rate_min %> - <%= @job.formatted_pay_rate_max %></td>
+        </tr>
+        <tr>
+          <td>Work type</td>
+          <td><%= @job.work_type %></td>
+        </tr>
+        <tr>
+          <td>Location</td>
+          <td><%= @job.address %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h6>Job description</h6>
+    <%= simple_format(@job.description) %>
+    <% if @job.ideal_candidate %>
+      <div class="well well-job">
+        <h6>Ideal candidate</h6>
+        <%= simple_format(@job.ideal_candidate) %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="media mbl mtn">
+  <div class="media-body">
+    <div class="span9">
+      <h6>Does this sound like you?</h6>
+      <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis.</p>
+    </div>
+    <div class="span3">
+      <% if @can_apply %>
+        <%= render :partial => "apply_button" %>
+      <% else %>
+        <%= render :partial => "apply_button", :locals => { :disabled => true } %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
