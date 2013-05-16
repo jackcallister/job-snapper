@@ -1,8 +1,12 @@
+<div class="page-header">
+  <h3>Your job listings</h3>
+</div>
+
 <table class="table table-bordered">
   <% @jobs.each do |job| %>
     <tr>
       <td><%= job.title %></td>
-      <td><%= link_to "View", dashboard_job_path(job) %></td>
+      <td><%= link_to "View job dashboard", job_applications_path(:job_id => job.id) %></td>
     </tr>
   <% end %>
 </table>
