@@ -2,15 +2,15 @@
   <%= link_to "Find a job", jobs_path %>
 </li>
 <li class="<%= 'active' if params[:controller] == 'candidates/dashboard' %>">
-  <%= link_to "My jobs", candidates_dashboard_path %>
+  <%= link_to "My jobs", "#" %>
 </li>
 <% if current_candidate.has_profile? %>
   <li class="<%= 'active' if params[:controller] == 'candidates/profiles' %>">
-    <%= link_to "My profile", edit_candidates_profile_path %>
+    <%= link_to "My profile", edit_candidates_profiles_path %>
   </li>
 <% else %>
   <li class="<%= 'active' if params[:controller] == 'candidates/profiles' %>">
-    <%= link_to "My profile", new_candidates_profile_path %>
+    <%= link_to "My profile", new_candidates_profiles_path %>
   </li>
 <% end %>
 <li class="<%= 'active' if params[:controller] == 'devise/registrations' %>">

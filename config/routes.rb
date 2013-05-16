@@ -4,18 +4,18 @@ JobSnapper::Application.routes.draw do
               :path_names => { :sign_in => "sign-in", :sign_out => "sign-out", :sign_up => "sign-up" }
 
   namespace :candidates do
-    resource :profile, :except => [:destroy, :show]
-    get "dashboard" => "dashboard#index"
+    resource :profiles, :except => [:show, :destroy]
   end
 
   namespace :employers do
-    get "dashboard" => "dashboard#index", :as => "jobs_dashboard"
-    get "dashboard/:job_id" => "dashboard#show", :as => "job_dashboard"
+    get "dashboard" => "dashboard#index", :as => "dashboard"
   end
 
-  resources :jobs
+  resources :jobs do
+    resources :applications, :controller => "jobs/applications", :only => [:index, :show]
+  end
 
-  scope :jobs do
+  namespace :jobs do
     resources :types, :only => [:show]
     resources :categories, :only => [:show]
   end
@@ -23,8 +23,8 @@ JobSnapper::Application.routes.draw do
   namespace :applicant do
     resource :application, :controller => 'application', only: [:create, :destroy] do
       member do
-        get ":id/accept" => "application#accept", as: "accept"
-        get ":id/reject" => "application#reject", as: "reject"
+        get ":id/accept" => "application#accept", :as => "accept"
+        get ":id/reject" => "application#reject", :as => "reject"
       end
     end
   end

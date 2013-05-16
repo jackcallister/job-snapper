@@ -1,34 +1,5 @@
-<%= form_for(resource, :html => { :class => "form-horizontal" }, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <legend>Sign in as an employer</legend>
-  <%= devise_error_messages! %>
-
-  <div class="control-group">
-    <%= f.label :email, :class => "control-label" %>
-    <div class="controls">
-      <%= f.email_field :email, :autofocus => true %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <%= f.label :password, :class => "control-label" %>
-    <div class="controls">
-      <%= f.password_field :password, class: "js-password" %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <div class="controls">
-      <label class="checkbox" for="checkbox-remember-me" style="padding-top: 0;">
-        Remember me
-        <input type="checkbox" value="" id="checkbox-remember-me" data-toggle="checkbox" name="employer[remember_me]">
-        <span class="icons">
-          <span class="first-icon fui-checkbox-unchecked"></span>
-          <span class="second-icon fui-checkbox-checked"></span>
-        </span>
-
-      </label>
-      <%= f.submit "Sign in", :class => "btn btn-primary btn-embossed" %>
-    </div>
-  </div>
-  <%= render "shared/devise/links" %>
-<% end %>
+<%= render  :partial => "shared/devise/sessions/new/form",
+            :locals => {  :resource => resource,
+                          :resource_name => resource_name,
+                          :path => session_path(resource_name),
+                          :user_type => "an employer" } %>

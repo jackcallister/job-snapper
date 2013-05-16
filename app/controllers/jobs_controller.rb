@@ -1,7 +1,6 @@
 class JobsController < ApplicationController
   before_action :authenticate_employer!, except: [:show, :index]
-  before_action :correct_employer, only: [:edit, :update, :destroy]
-  before_action :application_status, only: [:show]
+  before_action :correct_employer, only: [:edit, :update, :destroy, :applications]
   before_action :build_application, only: [:show]
 
   def index
@@ -26,8 +25,8 @@ class JobsController < ApplicationController
 
   def create
     @job = current_employer.jobs.build(job_params)
-    @job.category = Category.find(params[:job][:category_id])
-    @job.type = Type.find(params[:job][:type_id])
+    @job.category = Category.find(params[:job][:category_id]) unless params[:job][:category_id].blank?
+    @job.type = Type.find(params[:job][:type_id]) unless params[:job][:type_id].blank?
 
     @categories = Category.all
     @types = Type.all
@@ -102,22 +101,6 @@ class JobsController < ApplicationController
   def build_guest_application
     @application = Application.new(candidate_id: nil, job_id: params[:id])
     params[:application] = @application
-  end
-
-  def application_status
-    if current_candidate.nil? && current_employer.nil?
-      # User is a guest and can apply.
-      @can_apply = true
-    elsif current_employer
-      # Employer cannot apply
-      @can_apply = false
-    elsif !current_candidate.can_apply?(params[:id])
-      # Candidate has already applied to this job.
-      @can_apply = false
-    else
-      # All that's left is a candidate that has not applied.
-      @can_apply = true
-    end
   end
 
   def correct_employer

@@ -2,7 +2,7 @@
   <% @jobs.each do |job| %>
     <tr>
       <td><%= job.title %></td>
-      <td><%= link_to "View", employers_job_dashboard_path(job) %></td>
+      <td><%= link_to "View", dashboard_job_path(job) %></td>
     </tr>
   <% end %>
 </table>

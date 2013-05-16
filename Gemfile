@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0.beta1'
+gem 'rails', '4.0.0.rc1'
 
 gem 'pg'
 
@@ -18,7 +18,14 @@ gem 'will_paginate-bootstrap'
 # For rails 3.x gems with attr_accessible
 # gem 'protected_attributes'
 
+# For parsing HTML
 gem 'nokogiri'
+
+# Ransack for search
+gem 'ransack', github: 'ernie/ransack', branch: 'rails-4'
+
+gem 'faker'
+gem 'populator'
 
 # Gems used only for assets and not required
 # in production environments by default.

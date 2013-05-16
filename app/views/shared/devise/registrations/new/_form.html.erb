@@ -1,0 +1,33 @@
+<%= form_for(resource, :html => { :class => "form-horizontal" }, :as => resource_name, :url => path) do |f| %>
+  <legend>Sign up as an <%= user_type %></legend>
+  <%= devise_error_messages! %>
+
+  <div class="control-group">
+    <%= f.label :email, :class => "control-label" %>
+    <div class="controls">
+      <%= f.email_field :email, :autofocus => true %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :password, :class => "control-label" %>
+    <div class="controls">
+      <%= f.password_field :password, class: "js-password" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :password, :class => "control-label" %>
+    <div class="controls">
+      <%= f.password_field :password_confirmation, class: "js-password-confirmation" %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="controls">
+      <%= f.submit "Sign up", :class => "btn btn-primary btn-embossed" %>
+    </div>
+  </div>
+
+  <%= render "shared/devise/links" %>
+<% end %>

@@ -1,21 +1,18 @@
 class Job < ActiveRecord::Base
+  include Addressify
+  include Skillable
+
   belongs_to :employer
-  belongs_to :region
-  belongs_to :city
   has_many :applications
   has_one :categorization
   has_one :category, :through => :categorization
   has_one :classification
   has_one :type, :through => :classification
 
-  acts_as_taggable_on :skills
-
   validates_presence_of :title
-  validates_presence_of :company
   validates_presence_of :contact_name
 
-  validates_presence_of :region_id
-  validates_presence_of :city_id
+  validates_presence_of :region_id, :message => "We need a location to find relevant candidates."
   validates_presence_of :type_id
   validates_presence_of :category_id
 
@@ -46,10 +43,6 @@ class Job < ActiveRecord::Base
 
   def formatted_pay_rate_max
     "$#{pay_rate_max}"
-  end
-
-  def address
-    "#{region.name}, #{city.name}"
   end
 
   def work_type

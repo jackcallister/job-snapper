@@ -26,14 +26,7 @@
           <tr>
             <td>Skills required</td>
             <td>
-              <% last = @job.skill_list.last %>
-              <% @job.skill_list.each do |skill| %>
-                <% if last == skill %>
-                  <%= "#{skill}" %>
-                <% else %>
-                  <%= "#{skill}," %>
-                <% end %>
-              <% end %>
+              <%= @job.skill_list.to_sentence(:last_word_connector => ", ") %>
             </td>
           </tr>
         <% end %>
@@ -51,21 +44,25 @@
   </div>
 </div>
 
-<div class="media mbl mtn">
-  <div class="media-body">
-    <div class="span9">
-      <h6>Does this sound like you?</h6>
-      <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis.</p>
-    </div>
-    <div class="span3">
-      <% if @can_apply %>
-        <%= render :partial => "apply_button" %>
-      <% else %>
-        <%= render :partial => "apply_button", :locals => { :disabled => true } %>
-      <% end %>
+<% if !current_employer %>
+  <div class="media mbl mtn">
+    <div class="media-body">
+      <div class="span9">
+        <h6>Does this sound like you?</h6>
+        <p>Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis.</p>
+      </div>
+      <div class="span3">
+        <% if current_user.can_apply_to(@job) %>
+          <%= render :partial => "apply_button", :locals => { :disabled => false } %>
+        <% else %>
+          <%= render :partial => "apply_button", :locals => { :disabled => true } %>
+        <% end %>
+      </div>
     </div>
   </div>
-</div>
-
-
+<% elsif @job.employer_id == current_employer.id %>
+  <div class="row-fluid">
+    <%= link_to "View job dashboard", job_applications_path(@job.id), :class => "btn btn-embossed btn-info btn-block span4 offset4" %>
+  </div>
+<% end %>
 

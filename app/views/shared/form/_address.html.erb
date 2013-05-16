@@ -1,7 +1,8 @@
-<div class="control-group">
+<div class="control-group <%= control_group_error(obj, :region_id) %>">
   <%= f.label :region_id, "Region", :class => "control-label" %>
   <div class="controls">
     <%= f.collection_select(:region_id, Region.all, :id, :name, { :prompt => true }, { :class => "filter-control" } )%>
+    <%= error_help_text(obj, :region_id) %>
   </div>
 </div>
 

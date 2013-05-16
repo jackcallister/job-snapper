@@ -2,6 +2,9 @@ class Application < ActiveRecord::Base
   belongs_to :job
   belongs_to :candidate
 
+  validates_presence_of :job_id
+  validates_presence_of :candidate_id
+
   def pending?
     if status == nil
       return true

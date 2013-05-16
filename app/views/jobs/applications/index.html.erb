@@ -1,0 +1,27 @@
+<div class="page-header">
+  <h3>Applicants for - <%= @job.title %></h3>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Contact number</th>
+      <th>View</th>
+      <th>Accept</th>
+      <th>Reject</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @job.applications.order(created_at: :asc).each do |application| %>
+      <tr>
+        <td><%= application.candidate.profile.name %></td>
+        <td><%= application.candidate.profile.contact_number %></td>
+        <td><%= link_to "View application", job_application_path(:id => application.candidate_id) %></td>
+        <td><%= link_to "Accept", accept_applicant_application_path(application.id) %></td>
+        <td><%= link_to "Reject", reject_applicant_application_path(application.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

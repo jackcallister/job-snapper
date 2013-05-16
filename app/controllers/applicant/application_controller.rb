@@ -1,8 +1,9 @@
 class Applicant::ApplicationController < ApplicationController
   before_action :authenticate_candidate!, :only => [:create, :destroy]
   before_action :authenticate_employer!, :only => [:accept, :reject]
-  before_action :correct_candidate, only: [:destroy]
-  before_action :correct_employer, only: [:accept, :reject]
+  before_action :correct_candidate, :only => [:destroy]
+  before_action :correct_employer, :only => [:accept, :reject]
+  before_action :applyable_candidate, :only => [:create]
 
   def accept
     @application.status = true
@@ -62,6 +63,12 @@ class Applicant::ApplicationController < ApplicationController
       :candidate_id,
       :job_id
       )
+  end
+
+  def applyable_candidate
+    if current_candidate.profile.nil?
+      redirect_to profile_new_candidate_path, :notice => "You should complete your profile before applying to a job."
+    end
   end
 
   def correct_candidate

@@ -1,19 +1,21 @@
-<%= form_for(@profile, :html => { :class => "form-horizontal" }, url: candidates_profile_path) do |f| %>
+<%= form_for(@profile, :html => { :class => "form-horizontal" }, url: candidates_profiles_path) do |f| %>
   <legend><%= action %> your profile</legend>
 
-  <div class="control-group">
+  <div class="control-group <%= control_group_error(@profile, :name) %>">
     <%= f.label :name, "Name (full)", :class => "control-label" %>
     <div class="controls">
       <%= f.text_field :name, :autofocus => true %>
+      <%= error_help_text(@profile, :name) %>
     </div>
   </div>
 
-  <%= render :partial => "shared/form/address", :locals => { :f => f } %>
+  <%= render :partial => "shared/form/address", :locals => { :f => f, :obj => @profile } %>
 
-  <div class="control-group">
+  <div class="control-group <%= control_group_error(@profile, :contact_number) %>">
     <%= f.label :contact_number, :class => "control-label" %>
     <div class="controls">
       <%= f.text_field :contact_number %>
+      <%= error_help_text(@profile, :contact_number, "pts") %>
     </div>
   </div>
 
@@ -24,10 +26,11 @@
     </div>
   </div>
 
-  <div class="control-group">
+  <div class="control-group <%= control_group_error(@profile, :previous_work_experience) %>">
     <%= f.label :previous_work_experience, :class => "control-label" %>
     <div class="controls">
       <%= f.text_area :previous_work_experience, :class => "span12", :rows => "3" %>
+      <%= error_help_text(@profile, :previous_work_experience, "pts") %>
     </div>
   </div>
 
