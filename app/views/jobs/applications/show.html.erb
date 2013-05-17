@@ -1,6 +1,8 @@
 <div class="page-header">
-  <h3><%= @candidate_profile.name %> - <%= @job.title %></h3>
+  <h3><%= @candidate_profile.name %> <small>- Application for <%= @job.title %></small></h3>
 </div>
+
+<%= gravatar_for @candidate %>
 
 <p>Details about the applicant</p>
 <p>Mayby even a suitability ranking!</p>
