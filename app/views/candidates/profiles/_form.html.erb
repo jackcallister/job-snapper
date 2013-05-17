@@ -1,6 +1,17 @@
 <%= form_for(@profile, :html => { :class => "form-horizontal" }, url: candidates_profiles_path) do |f| %>
   <legend><%= action %> your profile</legend>
 
+  <div class="control-group">
+    <label class="control-label" for="candidate_profile_Gravatar">
+      Gravatar<br><a href="http://gravatar.com/emails" target="_blank">change</a>
+    </label>
+    <div class="controls span1">
+      <a href="http://gravatar.com/emails" class="thumbnail" target="_blank">
+        <%= gravatar_for Candidate.find(current_candidate.id) %>
+      </a>
+    </div>
+  </div>
+
   <div class="control-group <%= control_group_error(@profile, :name) %>">
     <%= f.label :name, "Name (full)", :class => "control-label" %>
     <div class="controls">
