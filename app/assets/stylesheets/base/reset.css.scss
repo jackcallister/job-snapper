@@ -29,3 +29,8 @@ form .clearfix:before, form .clearfix:after {
 .form-horizontal .help-inline {
   padding-left: 0;
 }
+
+.table tbody tr.success > td {
+  border-top: 2px solid #1ABC9C !important;
+  background-color: #DEF3D6 !important;
+}

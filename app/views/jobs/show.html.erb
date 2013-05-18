@@ -62,6 +62,6 @@
   </div>
 <% elsif @job.employer_id == current_employer.id %>
   <div class="row-fluid">
-    <%= link_to "View job dashboard", job_applications_path(@job.id), :class => "btn btn-embossed btn-info btn-block span4 offset4" %>
+    <%= link_to "View job applications", job_applications_path(@job.id), :class => "btn btn-embossed btn-info btn-block span4 offset4" %>
   </div>
 <% end %>

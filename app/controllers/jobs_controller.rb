@@ -119,6 +119,7 @@ class JobsController < ApplicationController
       :city_id,
       :type_id,
       :category_id,
+      :positions,
       :start_date,
       :pay_rate_min,
       :pay_rate_max,

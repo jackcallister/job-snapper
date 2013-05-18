@@ -1,16 +1,22 @@
 class Applicant::ApplicationController < ApplicationController
   before_action :authenticate_candidate!, :only => [:create, :destroy]
-  before_action :authenticate_employer!, :only => [:accept, :reject]
+  before_action :authenticate_employer!, :only => [:accept, :reject, :unaccept]
   before_action :correct_candidate, :only => [:destroy]
-  before_action :correct_employer, :only => [:accept, :reject]
+  before_action :correct_employer, :only => [:accept, :reject, :unaccept]
   before_action :applyable_candidate, :only => [:create]
 
   def accept
+    if @application.job.positions_available == 0
+      return redirect_to job_applications_path(@application.job.id), :notice => "All available positions have been filled."
+    else
+      @application.job.positions_available -= 1
+    end
+    @application.job.save
     @application.status = true
 
     respond_to do |format|
       if @application.save
-        format.html { redirect_to root_url, notice: "Application successfully accepted." }
+        format.html { redirect_to job_applications_path(@application.job.id), notice: "Application successfully accepted." }
         format.json { render json: @application, status: :created, location: @application }
       else
         format.html { render @application }
@@ -20,11 +26,34 @@ class Applicant::ApplicationController < ApplicationController
   end
 
   def reject
-    @application.status = false
+    jobs_positions_available = @application.job.positions_available += 1
+    if @application.job.positions < jobs_positions_available
+      @application.status = false
+    else
+      @application.job.save
+      @application.status = false
+    end
 
     respond_to do |format|
       if @application.save
-        format.html { redirect_to job_applications_path(:job_id => @application.job_id), notice: "Application successfully rejected." }
+        format.html { redirect_to job_applications_path(@application.job_id), notice: "Application was removed." }
+        format.json { render json: @application, status: :created, location: @application }
+      else
+        format.html { render @application }
+        format.json { render json: @application.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def unaccept
+    @application.job.positions_available += 1
+
+    @application.job.save
+    @application.status = nil
+
+    respond_to do |format|
+      if @application.save
+        format.html { redirect_to job_applications_path(@application.job_id), notice: "Application was removed." }
         format.json { render json: @application, status: :created, location: @application }
       else
         format.html { render @application }

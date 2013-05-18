@@ -1,8 +1,8 @@
 <div class="page-header">
-  <h3>Applicants <small>- <%= @job.title %></small></h3>
+  <h3>Applicants <small>- <%= @job.title %></small><small class="pull-right hidden-phone" style="margin-top: 25px;">Remaining positions (<%= @job.positions_available %>)</small></h3>
 </div>
 
-<% if @job.applications.pending.any? %>
+<% if @job.applications.length > 0 %>
   <table class="table table-striped">
     <thead>
       <tr>
@@ -16,15 +16,23 @@
 
     <tbody>
       <% @job.applications.pending.order(created_at: :asc).each do |application| %>
-        <tr>
+        <tr class="<%= application_status_class(application) %>">
           <td><%= application.candidate.profile.name %></td>
           <td><%= application.candidate.profile.contact_number %></td>
-          <td>
-            <%= link_to "View application",
-                job_application_path(:id => Application.find_by(job_id: params[:job_id], candidate_id: application.candidate.id).id ) %>
+          <td><%= link_to "View application", job_application_path(:id => Application.find_by(job_id: params[:job_id], candidate_id: application.candidate.id).id ) %>
           </td>
-          <td><%= link_to "Accept", accept_applicant_application_path(application.id) %></td>
-          <td><%= link_to "Remove", reject_applicant_application_path(application.id) %></td>
+
+          <% if @job.positions_available == 1 %>
+            <td><%= link_to "Accept", accept_applicant_application_path(application.id), :confirm => "Are you sure? Accepting this applicant will fill all job positions and close the job." unless application.status == true %></td>
+          <% else %>
+            <td><%= link_to "Accept", accept_applicant_application_path(application.id) unless application.status == true %></td>
+          <% end %>
+
+          <% if application.status == true %>
+            <td><%= link_to "Unaccept", unaccept_applicant_application_path(application.id), :confirm => "Are you sure you want to unaccept this application?" %></td>
+          <% else %>
+            <td><%= link_to "Remove", reject_applicant_application_path(application.id), :confirm => "Are you certain you want to remove this application? This cannot be undone." %></td>
+          <% end %>
         </tr>
       <% end %>
     </tbody>

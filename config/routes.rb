@@ -8,23 +8,19 @@ JobSnapper::Application.routes.draw do
   end
 
   namespace :employers do
-    get "dashboard" => "dashboard#index", :as => "dashboard"
+    resource :dashboard, :only => [:show], :controller => "dashboard"
   end
 
   resources :jobs do
     resources :applications, :controller => "jobs/applications", :only => [:index, :show]
   end
 
-  namespace :jobs do
-    resources :types, :only => [:show]
-    resources :categories, :only => [:show]
-  end
-
   namespace :applicant do
     resource :application, :controller => 'application', only: [:create, :destroy] do
       member do
-        get ":id/accept" => "application#accept", :as => "accept"
-        get ":id/reject" => "application#reject", :as => "reject"
+        get ":id/accept"    => "application#accept",    :as => "accept"
+        get ":id/reject"    => "application#reject",    :as => "reject"
+        get ":id/unaccept"  => "application#unaccept",  :as => "unaccept"
       end
     end
   end

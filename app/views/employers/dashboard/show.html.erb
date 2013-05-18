@@ -1,0 +1,29 @@
+<div class="page-header">
+  <h3>Your job listings</h3>
+</div>
+
+<% if @jobs.any? %>
+  <table class="table table-stripped">
+    <thead>
+      <th>Job title</th>
+      <th>Actions</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </thead>
+    <% @jobs.order(created_at: :asc).each do |job| %>
+      <tr>
+        <td><%= job.title %></td>
+        <td><%= link_to "View", job_path(job.id) %></td>
+        <td><%= link_to "Applicants (#{job.applications.count})", job_applications_path(job.id) %></td>
+        <td><%= link_to "Edit", edit_job_path(job.id) %></td>
+        <td><%= link_to "Close", job_path(job.id) %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <div class="row-fluid">
+    <p>You currently have no jobs.</p>
+    <%= link_to "Create a job", new_job_path, :class => "btn btn-info btn-embossed" %>
+  </div>
+<% end %>

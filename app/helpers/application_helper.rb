@@ -13,7 +13,7 @@ module ApplicationHelper
     if application.rejected?
       return "error"
     elsif application.pending?
-      return "warning"
+      return ""
     elsif application.accepted?
       return "success"
     end
@@ -26,14 +26,6 @@ module ApplicationHelper
       return current_employer
     else
       Guest.new
-    end
-  end
-
-  def employers_dashboard_path_class
-    if params[:action] == 'dashboard' || params[:controller] == 'employers/dashboard'
-      return 'active'
-    elsif Job.where(employer_id: current_employer.id, id: params[:id])
-      return 'active'
     end
   end
 end
