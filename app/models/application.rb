@@ -5,6 +5,8 @@ class Application < ActiveRecord::Base
   validates_presence_of :job_id
   validates_presence_of :candidate_id
 
+  scope :pending, where("applications.status IS NOT FALSE")
+
   def pending?
     if status == nil
       return true
