@@ -24,7 +24,7 @@ class Applicant::ApplicationController < ApplicationController
 
     respond_to do |format|
       if @application.save
-        format.html { redirect_to root_url, notice: "Application successfully rejected." }
+        format.html { redirect_to job_applications_path(:job_id => @application.job_id), notice: "Application successfully rejected." }
         format.json { render json: @application, status: :created, location: @application }
       else
         format.html { render @application }
