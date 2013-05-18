@@ -1,8 +1,44 @@
-<div class="page-header">
-  <h3><%= @candidate_profile.name %> <small>- Application for <%= @job.title %></small></h3>
+<div class="page-header clearfix">
+  <h3 class="span11"><%= @candidate_profile.name %> <small>- <%= @job.title %></small></h3>
+  <div class="span1 pull-right visible-desktop">
+    <span class="thumbnail">
+      <%= gravatar_for @candidate %>
+    </span>
+  </div>
 </div>
 
-<%= gravatar_for @candidate %>
+<div class="row-fluid">
+  <%= simple_format(@candidate_profile.about_me) %>
 
-<p>Details about the applicant</p>
-<p>Mayby even a suitability ranking!</p>
+  <h4 class="mtl">Previous work experience</h4>
+  <%= simple_format(@candidate_profile.previous_work_experience) %>
+
+  <h4 class="mtl">Applicants details</h4>
+  <table class="table table-bordered mbl">
+    <tbody>
+      <tr>
+        <td>Contact number</td>
+        <td><%= @candidate_profile.contact_number %></td>
+      </tr>
+      <tr>
+        <td>Location</td>
+        <td><%= @candidate_profile.address %></td>
+      </tr>
+      <% if @candidate_profile.skill_list %>
+        <tr>
+          <td>Skills</td>
+          <td>
+            <%= @candidate_profile.skill_list.to_sentence(:last_word_connector => ", ") %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <h4 class="mtl">Next steps</h4>
+  <%= link_to "Accept application", accept_applicant_application_path(params[:id]), :class => "btn btn-success btn-embossed" %>
+  or
+  <%= link_to "Remove application", reject_applicant_application_path(params[:id]), :class => "btn btn-danger btn-embossed" %>
+  <br>
+  <%= link_to "back to view all applications", job_applications_path(params[:job_id]), :class => "mtm", :style => "display: block;" %>
+</div>

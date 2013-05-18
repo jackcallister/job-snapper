@@ -36,7 +36,7 @@
     <h6>Job description</h6>
     <%= simple_format(@job.description) %>
     <% if @job.ideal_candidate %>
-      <div class="well well-job">
+      <div class="well well-job mbn mtl">
         <h6>Ideal candidate</h6>
         <%= simple_format(@job.ideal_candidate) %>
       </div>
@@ -65,4 +65,3 @@
     <%= link_to "View job dashboard", job_applications_path(@job.id), :class => "btn btn-embossed btn-info btn-block span4 offset4" %>
   </div>
 <% end %>
-
