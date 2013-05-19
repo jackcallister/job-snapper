@@ -15,12 +15,13 @@ class Job < ActiveRecord::Base
   validates_presence_of :title, :message => "Please include a title"
   validates_presence_of :contact_name, :message => "Please include a contact name"
 
-  validates_presence_of :region_id, :message => "Please include location"
-  validates_presence_of :type_id, :message => "Please include a job type"
-  validates_presence_of :category_id, :message => "Please include a job category"
+  validates_presence_of :region, :message => "Please include location"
+  validates_presence_of :type, :message => "Please include a job type"
+  validates_presence_of :category, :message => "Please include a job category"
 
-  validates_presence_of :positions, :message => "Please include the number of positions"
-  validates_numericality_of :positions, :message => "You must use a numeral"
+  # TODO - Reaneble these validations once the field exists
+  # validates_presence_of :positions, :message => "Please include the number of positions"
+  # validates_numericality_of :positions, :message => "You must use a numeral"
 
   validates_presence_of :summary
   validates_presence_of :description
