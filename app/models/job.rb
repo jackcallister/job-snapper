@@ -2,12 +2,13 @@ class Job < ActiveRecord::Base
   include Addressify
   include Skillable
 
-  before_create :set_positions_available
-
   belongs_to :employer
+
   has_many :applications, :dependent => :destroy
+
   has_one :categorization
   has_one :category, :through => :categorization
+
   has_one :classification
   has_one :type, :through => :classification
 
@@ -53,10 +54,4 @@ class Job < ActiveRecord::Base
   def work_type
     "#{type.title}"
   end
-
-  private
-
-    def set_positions_available
-      self.positions_available = self.positions
-    end
 end

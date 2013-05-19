@@ -1,12 +1,20 @@
 <div class="page-header">
-  <h3>All available jobs</h3>
+  <h3>Find a job</h3>
 </div>
 <% @jobs.each do |job| %>
   <div class="media media-job">
     <div class="media-body">
-      <h4 class="media-heading"><%= link_to job.title.html_safe, job_path(job) %> <small>- <%= job.category.title %></small></h4>
+      <h4 class="media-heading"><%= link_to job.title.html_safe, job_path(job) %></h4>
+      <div class="mbm">
+        <% if job.company %>
+          <small><%= job.company %></small><br>
+        <% end %>
+        <small><%= job.category.title %></small><br>
+        <small><%= job.address %></small><br>
+        <small><%= job.type.title %></small>
+      </div>
       <%= job.summary.html_safe %>
-      <p class="mbn mtl"><a href="<%= job_path(job) %>">View this job <small><span class="fui-arrow-right"></span></small></a></p>
+      <p class="mbn mtl"><a href="<%= job_path(job) %>">View this job</small></a></p>
     </div>
   </div>
 <% end %>

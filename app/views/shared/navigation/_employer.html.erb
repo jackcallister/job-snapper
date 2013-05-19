@@ -2,7 +2,7 @@
   <%= link_to "List a job", new_job_path  %>
 </li>
 <li class="<%= 'active' if params[:controller] == 'employers/dashboard' || params[:controller] == 'jobs/applications' %>">
-  <%= link_to "My jobs listings", employers_dashboard_path %>
+  <%= link_to "My jobs", employers_dashboard_path %>
 </li>
 <li class="<%= 'active' if params[:controller] == 'devise/registrations' %>">
   <%= link_to "My account", edit_employer_registration_path %>

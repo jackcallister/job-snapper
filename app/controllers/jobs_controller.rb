@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
-  before_action :authenticate_employer!, except: [:show, :index]
-  before_action :correct_employer, only: [:edit, :update, :destroy, :applications]
-  before_action :build_application, only: [:show]
+  before_action :authenticate_employer!, :except => [:show, :index]
+  before_action :correct_employer, :only => [:edit, :update, :destroy, :applications]
+  before_action :build_application, :only => [:show]
 
   def index
     @jobs = Job.paginate(:page => params[:page])
@@ -119,7 +119,6 @@ class JobsController < ApplicationController
       :city_id,
       :type_id,
       :category_id,
-      :positions,
       :start_date,
       :pay_rate_min,
       :pay_rate_max,

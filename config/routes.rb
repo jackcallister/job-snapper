@@ -1,5 +1,4 @@
 JobSnapper::Application.routes.draw do
-
   devise_for  :candidates, :employers,
               :path_names => { :sign_in => "sign-in", :sign_out => "sign-out", :sign_up => "sign-up" }
 
@@ -19,8 +18,9 @@ JobSnapper::Application.routes.draw do
     resource :application, :controller => 'application', only: [:create, :destroy] do
       member do
         get ":id/accept"    => "application#accept",    :as => "accept"
-        get ":id/reject"    => "application#reject",    :as => "reject"
+        get ":id/remove"    => "application#remove",    :as => "remove"
         get ":id/unaccept"  => "application#unaccept",  :as => "unaccept"
+        get ":id/shortlist" => "application#shortlist", :as => "shortlist"
       end
     end
   end

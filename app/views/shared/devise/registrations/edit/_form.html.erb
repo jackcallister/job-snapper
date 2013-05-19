@@ -1,34 +1,36 @@
 <%= form_for(resource, :html => { :class => "form-horizontal", :method => :put }, :as => resource_name, :url => path) do |f| %>
   <legend>Edit <%= user_type %> account</legend>
-  <%= devise_error_messages! %>
 
-  <div class="control-group">
+  <div class="control-group <%= control_group_error(resource, :email) %>">
     <%= f.label :email, :class => "control-label" %>
     <div class="controls">
       <%= f.email_field :email, :autofocus => true %>
+      <%= error_help_text(resource, :email) %>
     </div>
   </div>
 
-  <div class="control-group">
+  <div class="control-group <%= control_group_error(resource, :password) %>">
     <%= f.label :password, :class => "control-label" %>
     <div class="controls">
       <%= f.password_field :password, :autocomplete => "off", class: "js-password" %>
+      <%= error_help_text(resource, :password) %>
       <p class="help-block"><small>leave blank if you don't want to change it</small></p>
     </div>
   </div>
 
-  <div class="control-group">
+  <div class="control-group <%= control_group_error(resource, :password_confirmation) %>">
     <%= f.label :password_confirmation, :class => "control-label" %>
     <div class="controls">
       <%= f.password_field :password_confirmation, class: "js-password-confirmation" %>
+      <%= error_help_text(resource, :password_confirmation) %>
     </div>
   </div>
 
-  <div class="control-group">
+  <div class="control-group <%= control_group_error(resource, :current_password) %>">
     <%= f.label :current_password, :class => "control-label" %>
-    <i></i>
     <div class="controls">
       <%= f.password_field :current_password, class: "js-password-current" %>
+      <%= error_help_text(resource, :current_password) %>
       <p class="help-block"><small>we need your current password to confirm your changes</small></p>
     </div>
   </div>

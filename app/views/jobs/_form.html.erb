@@ -41,14 +41,6 @@
     </div>
   </div>
 
-  <div class="control-group <%= control_group_error(@job, :positions) %>">
-    <%= f.label :positions, "Number of available positions", :class => "control-label" %>
-    <div class="controls">
-      <%= f.text_field :positions %>
-      <%= error_help_text(@job, :positions) %>
-    </div>
-  </div>
-
   <div class="control-group">
     <%= f.label :start_date, :class => "control-label" %>
     <div class="controls">
