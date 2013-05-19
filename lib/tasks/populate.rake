@@ -5,6 +5,7 @@ namespace :db do
     desc "Populate all necessary models for development"
     task :all => [
          :categories,
+         :types,
          :cities,
          :employers,
          :jobs,
@@ -41,6 +42,25 @@ namespace :db do
           end
         end
       end
+    end
+
+    desc "Populate a list of fake Employers"
+    task :employers => :environment do
+      FactoryGirl.create_list(:employer, 10)
+    end
+
+    desc "Populate a list of fake candidates"
+    task :candidates => :environment do
+      FactoryGirl.create_list(:candidate, 50)
+    end
+
+    desc "Populate a list of fake jobs"
+    task :jobs => :environment do
+      FactoryGirl.create_list(:job, 100,
+                              :employer => Employer.sample,
+                              :category => Category.sample,
+                              :city     => City.sample
+      )
     end
   end
 end
