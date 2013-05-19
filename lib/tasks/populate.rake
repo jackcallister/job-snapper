@@ -8,8 +8,7 @@ namespace :db do
          :types,
          :cities,
          :employers,
-         :jobs,
-         :candidates
+         :jobs
     ] do
 
           # No-op
@@ -47,11 +46,6 @@ namespace :db do
     desc "Populate a list of fake Employers"
     task :employers => :environment do
       FactoryGirl.create_list(:employer, 10)
-    end
-
-    desc "Populate a list of fake candidates"
-    task :candidates => :environment do
-      FactoryGirl.create_list(:candidate, 50)
     end
 
     desc "Populate a list of fake jobs"
