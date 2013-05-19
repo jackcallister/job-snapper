@@ -37,13 +37,13 @@
 
   <h4 class="mtl">Next steps</h4>
   <% if @application.status == true %>
-    <%= link_to "Unaccept application", unaccept_applicant_application_path(params[:id]), :class => "btn btn-warning btn-embossed" %>
-    <%= link_to "back to view all applications", job_applications_path(params[:job_id]), :class => "mtm", :style => "display: block;" %>
+    <%= link_to "Unaccept application", unaccept_applicant_application_path(params[:id]), :class => "mbm", :style => "display: block;", :confirm => "Are you sure you want to unaccept this application?" %>
+    <%= link_to "Back to view all applications", job_applications_path(params[:job_id]), :class => "mtm", :style => "display: block;" %>
   <% else %>
     <%= link_to "Accept application", accept_applicant_application_path(params[:id]), :class => "btn btn-success btn-embossed" %>
     or
     <%= link_to "Remove application", remove_applicant_application_path(params[:id]), :class => "btn btn-danger btn-embossed" %>
     <br>
-    <%= link_to "back to view all applications", job_applications_path(params[:job_id]), :class => "mtm", :style => "display: block;" %>
+    <%= link_to "Back to view all applications", job_applications_path(params[:job_id]), :class => "mtm", :style => "display: block;" %>
   <% end %>
 </div>
