@@ -15,12 +15,11 @@ JobSnapper::Application.routes.draw do
   end
 
   namespace :applicant do
-    resource :application, :controller => 'application', only: [:create, :destroy] do
+    resource :application, :controller => 'application', only: [:create] do
       member do
         get ":id/accept"    => "application#accept",    :as => "accept"
         get ":id/remove"    => "application#remove",    :as => "remove"
         get ":id/unaccept"  => "application#unaccept",  :as => "unaccept"
-        get ":id/shortlist" => "application#shortlist", :as => "shortlist"
       end
     end
   end
