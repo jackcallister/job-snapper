@@ -1,0 +1,9 @@
+development: &defaults
+  adapter: postgresql
+  database: jobsnapper
+  host: localhost
+
+test:
+  adapter: postgresql
+  database: jobsnapper_test
+  host: localhost
