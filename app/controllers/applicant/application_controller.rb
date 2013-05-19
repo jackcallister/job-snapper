@@ -1,7 +1,6 @@
 class Applicant::ApplicationController < ApplicationController
-  before_action :authenticate_candidate!, :only => [:create, :destroy]
+  before_action :authenticate_candidate!, :only => [:create]
   before_action :authenticate_employer!, :only => [:accept, :remove, :unaccept]
-  before_action :correct_candidate, :only => [:destroy]
   before_action :correct_employer, :only => [:accept, :remove, :unaccept]
   before_action :applyable_candidate, :only => [:create]
 
@@ -61,15 +60,6 @@ class Applicant::ApplicationController < ApplicationController
     end
   end
 
-  def destroy
-    @application.destroy
-
-    respond_to do |format|
-      format.html { redirect_to root_url }
-      format.json { head :no_content }
-    end
-  end
-
   private
 
   def application_params
@@ -83,11 +73,6 @@ class Applicant::ApplicationController < ApplicationController
     if current_candidate.profile.nil?
       redirect_to profile_new_candidate_path, :notice => "You should complete your profile before applying to a job."
     end
-  end
-
-  def correct_candidate
-    @application = current_candidate.applications
-    redirect_to root_url if @application.nil?
   end
 
   def correct_employer
