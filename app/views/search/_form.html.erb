@@ -1,26 +1,26 @@
 <%= search_form_for job_search do |f| %>
-  <%= f.collection_select :region_name_eq,
+  <%= f.collection_select :region_id_eq,
                           Region.all,
                           :id,
                           :name,
-                          {},
+                          {:include_blank => t('search.form.region.prompt')},
                           :class => 'select-block input-block-level mbl'
    %>
 
-  <%= f.collection_select :city_name_eq,
+  <%= f.collection_select :city_id_eq,
                           City.all,
                           :id,
                           :name,
-                          {},
+                           {:include_blank => t('search.form.city.prompt')},
                           :class => 'select-block input-block-level mbl'
   %>
 
 
-  <%= f.collection_select :category_title_eq,
+  <%= f.collection_select :category_id_eq,
                           Category.all,
                           :id,
                           :title,
-                          {},
+                           {:include_blank => t('search.form.category.prompt')},
                           :class => 'select-block input-block-level mbl'
   %>
 
