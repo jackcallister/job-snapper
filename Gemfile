@@ -22,7 +22,11 @@ gem 'will_paginate-bootstrap'
 gem 'nokogiri'
 
 # Ransack for search
-gem 'ransack', github: 'ernie/ransack', branch: 'rails-4'
+# FIXME go back to using the main ransack repo in a week or so
+# gem 'ransack', github: 'ernie/ransack', branch: 'rails-4'
+# https://github.com/ernie/ransack/issues/227
+gem 'ransack', github: 'jonatack/ransack', ref: '0703144bb0ce2ea1884ef02b52bc51157152b566'
+gem 'polyamorous', github: 'jonatack/polyamorous', ref: '062c78be2edadfe5fbb104fe68d213fcbeae478d'
 
 gem 'faker'
 gem 'populator'

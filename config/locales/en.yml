@@ -20,4 +20,13 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  search:
+    form:
+      region:
+        prompt: '-- Any Region -- '
+      city:
+        prompt: '-- Any City --'
+      category:
+        prompt: '-- Any Category --'
+
   hello: "Hello world"
