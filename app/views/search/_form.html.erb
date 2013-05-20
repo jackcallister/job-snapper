@@ -1,0 +1,30 @@
+<%= search_form_for job_search do |f| %>
+  <%= f.collection_select :region_name_eq,
+                          Region.all,
+                          :id,
+                          :name,
+                          {},
+                          :class => 'select-block input-block-level mbl'
+   %>
+
+  <%= f.collection_select :city_name_eq,
+                          City.all,
+                          :id,
+                          :name,
+                          {},
+                          :class => 'select-block input-block-level mbl'
+  %>
+
+
+  <%= f.collection_select :category_title_eq,
+                          Category.all,
+                          :id,
+                          :title,
+                          {},
+                          :class => 'select-block input-block-level mbl'
+  %>
+
+  <%= f.text_field :title_or_description_cont, :class => 'input-block-level', :style => 'height: 35px;' %>
+
+  <%= f.submit 'Search', :class => 'btn btn-block mtm' %>
+<% end %>
