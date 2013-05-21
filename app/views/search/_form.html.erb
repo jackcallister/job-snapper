@@ -1,30 +1,32 @@
-<%= search_form_for job_search do |f| %>
-  <%= f.collection_select :region_id_eq,
-                          Region.all,
-                          :id,
-                          :name,
-                          {:include_blank => t('search.form.region.prompt')},
-                          :class => 'select-block input-block-level mbl'
-   %>
+<div class="media media-job">
+  <%= search_form_for job_search, :class => "mbn" do |f| %>
+    <%= f.collection_select :region_id_eq,
+                            Region.all,
+                            :id,
+                            :name,
+                            {:include_blank => t('search.form.region.prompt')},
+                            :class => 'select-block input-block-level mbl'
+     %>
 
-  <%= f.collection_select :city_id_eq,
-                          City.all,
-                          :id,
-                          :name,
-                           {:include_blank => t('search.form.city.prompt')},
-                          :class => 'select-block input-block-level mbl'
-  %>
+    <%= f.collection_select :city_id_eq,
+                            City.all,
+                            :id,
+                            :name,
+                             {:include_blank => t('search.form.city.prompt')},
+                            :class => 'select-block input-block-level mbl'
+    %>
 
 
-  <%= f.collection_select :category_id_eq,
-                          Category.all,
-                          :id,
-                          :title,
-                           {:include_blank => t('search.form.category.prompt')},
-                          :class => 'select-block input-block-level mbl'
-  %>
+    <%= f.collection_select :category_id_eq,
+                            Category.all,
+                            :id,
+                            :title,
+                             {:include_blank => t('search.form.category.prompt')},
+                            :class => 'select-block input-block-level mbl'
+    %>
 
-  <%= f.text_field :title_or_description_cont, :class => 'input-block-level', :style => 'height: 35px;' %>
+    <%= f.text_field :title_or_description_or_summary_cont, :class => 'input-block-level', :style => 'height: 35px;' %>
 
-  <%= f.submit 'Search', :class => 'btn btn-block mtm' %>
-<% end %>
+    <%= f.submit 'Search', :class => 'btn btn-block btn-info btn-embossed mtm' %>
+  <% end %>
+</div>
