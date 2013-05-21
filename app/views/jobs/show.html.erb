@@ -22,7 +22,7 @@
           <td>Location</td>
           <td><%= @job.address %></td>
         </tr>
-        <% if @job.skill_list %>
+        <% unless @job.skill_list.empty? %>
           <tr>
             <td>Skills required</td>
             <td>
@@ -35,7 +35,7 @@
 
     <h6>Job description</h6>
     <%= simple_format(@job.description) %>
-    <% if @job.ideal_candidate %>
+    <% unless @job.ideal_candidate.empty? %>
       <div class="well well-job mbn mtl">
         <h6>Ideal candidate</h6>
         <%= simple_format(@job.ideal_candidate) %>
