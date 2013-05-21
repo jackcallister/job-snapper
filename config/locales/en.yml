@@ -28,5 +28,7 @@ en:
         prompt: '-- Any City --'
       category:
         prompt: '-- Any Category --'
+      type:
+        prompt: '-- Any Job Type --'
 
   hello: "Hello world"

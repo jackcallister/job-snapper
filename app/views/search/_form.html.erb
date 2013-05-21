@@ -24,6 +24,14 @@
                           :class => 'select-block input-block-level mbl'
   %>
 
+  <%= f.collection_select :type_id_eq,
+                          Type.all,
+                          :id,
+                          :title,
+                           {:include_blank => t('search.form.type.prompt')},
+                          :class => 'select-block input-block-level mbl'
+  %>
+
   <%= f.text_field :title_or_description_cont, :class => 'input-block-level', :style => 'height: 35px;' %>
 
   <%= f.submit 'Search', :class => 'btn btn-block mtm' %>
