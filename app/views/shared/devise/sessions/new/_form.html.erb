@@ -1,18 +1,19 @@
 <%= form_for(resource, :html => { :class => "form-horizontal" }, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <legend>Sign in as <%= user_type %></legend>
-  <%= devise_error_messages! %>
 
-  <div class="control-group">
+  <div class="control-group <%= control_group_error(resource, :email) %>">
     <%= f.label :email, :class => "control-label" %>
     <div class="controls">
       <%= f.email_field :email, :autofocus => true %>
+      <%= error_help_text(resource, :email) %>
     </div>
   </div>
 
-  <div class="control-group">
+  <div class="control-group <%= control_group_error(resource, :password) %>">
     <%= f.label :password, :class => "control-label" %>
     <div class="controls">
       <%= f.password_field :password, class: "js-password" %>
+      <%= error_help_text(resource, :password) %>
     </div>
   </div>
 

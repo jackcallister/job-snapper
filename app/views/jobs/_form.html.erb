@@ -33,11 +33,11 @@
 
   <%= render :partial => "shared/form/address", :locals => { :f => f, :obj => @job } %>
 
-  <div class="control-group <%= control_group_error(@job, :type_id) %>">
+  <div class="control-group <%= control_group_error(@job, :type) %>">
     <%= f.label :type, "Job type", :class => "control-label" %>
     <div class="controls">
-      <%= collection_select(:job, :type_id, @types, :id, :title, { :prompt => true }) %>
-      <%= error_help_text(@job, :type_id) %>
+      <%= collection_select(:job, :type, @types, "id", :title, { :prompt => true }) %>
+      <%= error_help_text(@job, :type) %>
     </div>
   </div>
 
@@ -51,11 +51,11 @@
     </div>
   </div>
 
-  <div class="control-group <%= control_group_error(@job, :category_id) %>">
+  <div class="control-group <%= control_group_error(@job, :category) %>">
     <%= f.label :category, :class => "control-label" %>
     <div class="controls">
-      <%= collection_select(:job, :category_id, @categories, :id, :title, { :prompt => true }) %>
-      <%= error_help_text(@job, :category_id) %>
+      <%= collection_select(:job, :category, @categories, :id, :title, { :prompt => true }) %>
+      <%= error_help_text(@job, :category) %>
     </div>
   </div>
 

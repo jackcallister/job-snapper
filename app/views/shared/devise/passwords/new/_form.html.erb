@@ -2,10 +2,11 @@
   <legend>Forgot your password?</legend>
   <%= devise_error_messages! %>
 
-  <div class="control-group">
+  <div class="control-group <%= control_group_error(resource, :email) %>">
     <%= f.label :email, :class => "control-label" %>
     <div class="controls">
-      <%= f.password_field :password, :autofocus => true %>
+      <%= f.password_field :email, :autofocus => true %>
+      <%= error_help_text(resource, :email) %>
     </div>
   </div>
 
