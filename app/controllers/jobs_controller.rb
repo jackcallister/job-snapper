@@ -25,8 +25,9 @@ class JobsController < ApplicationController
 
   def create
     @job = current_employer.jobs.build(job_params)
-    @job.category = Category.find(params[:job][:category_id]) unless params[:job][:category_id].blank?
-    @job.type = Type.find(params[:job][:type_id]) unless params[:job][:type_id].blank?
+
+    @job.category = Category.find(params[:job][:category]) unless params[:job][:category].blank?
+    @job.type = Type.find(params[:job][:type]) unless params[:job][:type].blank?
 
     @categories = Category.all
     @types = Type.all
@@ -57,8 +58,8 @@ class JobsController < ApplicationController
   end
 
   def update
-    @job.category = Category.find(params[:job][:category_id])
-    @job.type = Type.find(params[:job][:type_id])
+    @job.category = Category.find(params[:job][:category])
+    @job.type = Type.find(params[:job][:type])
 
     respond_to do |format|
       if @job.update_attributes(job_params)
@@ -117,8 +118,6 @@ class JobsController < ApplicationController
       :contact_number,
       :region_id,
       :city_id,
-      :type_id,
-      :category_id,
       :start_date,
       :pay_rate_min,
       :pay_rate_max,
