@@ -63,12 +63,15 @@ namespace :db do
     task :jobs => :environment do
       region = Region.all.sample
       puts "Creating 100 jobs in #{region.name}..."
-      FactoryGirl.create_list(:job, 100,
-                              :employer => Employer.all.sample,
-                              :category => Category.all.sample,
-                              :region   => region,
-                              :city     => region.cities.first
-      )
+      100.times do
+        FactoryGirl.create(:job,
+                           :employer => Employer.all.sample,
+                           :category => Category.all.sample,
+                           :type     => Type.all.sample,
+                           :region   => region,
+                           :city     => region.cities.first
+        )
+      end
       puts "Done."
     end
   end
