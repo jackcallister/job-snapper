@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :region do
-    name "MyString"
+    sequence(:name) { |n| "Region #{n}" }
+    cities FactoryGirl.build_list(:city, 5)
   end
 end
