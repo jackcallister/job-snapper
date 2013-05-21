@@ -2,6 +2,6 @@
 
 FactoryGirl.define do
   factory :type do
-    title "MyString"
+    title { ["Full Time", "Part Time", "Contract"].sample }
   end
 end
