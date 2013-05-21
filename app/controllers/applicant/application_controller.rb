@@ -71,7 +71,7 @@ class Applicant::ApplicationController < ApplicationController
 
   def applyable_candidate
     if current_candidate.profile.nil?
-      redirect_to profile_new_candidate_path, :notice => "You should complete your profile before applying to a job."
+      redirect_to new_candidates_profiles_path, :notice => "You should complete your profile before applying to a job."
     end
   end
 
