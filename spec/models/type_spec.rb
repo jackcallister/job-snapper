@@ -1,5 +1,7 @@
 require 'spec_helper'
 
 describe Type do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should have_many :classifications }
+  it { should have_many(:jobs).through(:classifications) }
+  it { should validate_presence_of(:title) }
 end
