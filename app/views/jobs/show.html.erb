@@ -35,7 +35,7 @@
 
     <h6>Job description</h6>
     <%= simple_format(@job.description) %>
-    <% unless @job.ideal_candidate.empty? %>
+    <% unless @job.ideal_candidate.nil? %>
       <div class="well well-job mbn mtl">
         <h6>Ideal candidate</h6>
         <%= simple_format(@job.ideal_candidate) %>
