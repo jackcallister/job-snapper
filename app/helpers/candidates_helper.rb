@@ -7,6 +7,6 @@ module CandidatesHelper
     size = options[:size]
     gravatar =
     gravatar_url = "https://secure.gravatar.com/avatar/#{gravatar_id}?s=#{size}"
-    image_tag(gravatar_url, alt: candidate.profile.name, class: "gravatar")
+    image_tag(gravatar_url, class: "gravatar")
   end
 end
