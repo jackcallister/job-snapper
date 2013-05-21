@@ -19,3 +19,7 @@
   </div>
 <% end %>
 <%= will_paginate @jobs, :renderer => BootstrapPagination::Rails %>
+
+<% if @jobs.blank? %>
+  <h6>Sorry, your search returned no jobs</h6>
+<% end %>
