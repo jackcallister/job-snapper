@@ -9,7 +9,7 @@ FactoryGirl.define do
     region
 
     contact_name "Tester"
-    summary Faker::Lorem.sentence
-    description Faker::Lorem.paragraphs(2).join("\n\n")
+    summary Faker::Lorem.paragraphs(2).join("\n\n")
+    description Faker::Lorem.paragraphs(4).join("\n\n")
   end
 end
