@@ -28,8 +28,6 @@ gem 'nokogiri'
 gem 'ransack', github: 'jonatack/ransack', ref: '0703144bb0ce2ea1884ef02b52bc51157152b566'
 gem 'polyamorous', github: 'jonatack/polyamorous', ref: '062c78be2edadfe5fbb104fe68d213fcbeae478d'
 
-gem 'faker'
-gem 'populator'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -62,15 +60,16 @@ gem 'jbuilder', '~> 1.0.1'
 group :development do
   # Deploy with Capistrano
   gem 'capistrano'
+  gem 'debugger'
 end
 
 group :development, :test do
+  gem 'faker'
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'shoulda'
   gem 'factory_girl_rails'
   gem 'capybara'
   gem 'launchy'
-  gem 'rb-fsevent', '~> 0.9'
-  gem 'debugger'
+  gem 'database_cleaner'
 end
