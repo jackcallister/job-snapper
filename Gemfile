@@ -64,7 +64,6 @@ group :development do
 end
 
 group :development, :test do
-  gem 'faker'
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'shoulda'
@@ -75,4 +74,5 @@ end
 
 group :development, :test, :draft do
   gem 'factory_girl_rails'
+  gem 'faker'
 end
