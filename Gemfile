@@ -31,10 +31,10 @@ gem 'polyamorous', github: 'jonatack/polyamorous', ref: '062c78be2edadfe5fbb104f
 gem 'faker'
 gem 'populator'
 
+gem "bootstrap-sass", "2.3.1.0"
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem "bootstrap-sass", "2.3.1.0"
   gem 'smacssify', '~> 0.0.12'
   gem 'sass-rails',   '~> 4.0.0.beta1'
   gem 'coffee-rails', '~> 4.0.0.beta1'
