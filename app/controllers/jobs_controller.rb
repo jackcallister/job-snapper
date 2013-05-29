@@ -4,6 +4,7 @@ class JobsController < ApplicationController
   before_action :build_application, :only => [:show]
 
   def index
+    debugger
     @jobs = job_search.result(:distinct => true).paginate(:page => params[:page])
 
     respond_to do |format|
